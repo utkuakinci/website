@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Utku Akinci — Computer Scientist & Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#f5f3ef; --bg2:#edeae3; --surface:#ffffff; --border:#ddd9d0;
+      --text:#1a1814; --muted:#7a746a; --accent:#2563a8; --accent2:#c8501a;
+      --accent-lt:#dbeafe; --tag-bg:#f0ede6;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:400;line-height:1.6;}
+ 
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(245,243,239,.93);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 3rem;height:60px;}
+    .nav-logo{font-family:'DM Serif Display',serif;font-size:1.15rem;color:var(--text);}
+    .nav-links{display:flex;gap:2rem;list-style:none;}
+    .nav-links a{font-size:.8rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s;}
+    .nav-links a:hover{color:var(--accent);}
+ 
+    /* HERO */
+    #hero{padding-top:60px;display:grid;grid-template-columns:1fr 1fr;min-height:100vh;}
+    .hero-left{padding:6rem 3rem 4rem;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--border);}
+    .hero-eyebrow{font-family:'DM Mono',monospace;font-size:.72rem;color:var(--accent);letter-spacing:.2em;text-transform:uppercase;margin-bottom:1.2rem;opacity:0;animation:fadeUp .5s .1s forwards;}
+    h1{font-family:'DM Serif Display',serif;font-size:clamp(3rem,6vw,5.5rem);line-height:1.0;letter-spacing:-.01em;opacity:0;animation:fadeUp .6s .25s forwards;}
+    h1 em{font-style:italic;color:var(--accent2);}
+    .hero-role{margin-top:1.2rem;font-size:1rem;color:var(--muted);font-weight:300;opacity:0;animation:fadeUp .6s .4s forwards;}
+    .hero-desc{margin-top:1.4rem;font-size:.95rem;color:var(--muted);max-width:480px;line-height:1.8;opacity:0;animation:fadeUp .6s .55s forwards;}
+    .hero-cta{margin-top:2.5rem;display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeUp .6s .7s forwards;}
+    .btn-primary{padding:.7rem 1.8rem;background:var(--accent);color:#fff;font-family:'DM Mono',monospace;font-size:.78rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:background .2s,transform .2s;}
+    .btn-primary:hover{background:#1a4f8a;transform:translateY(-2px);}
+    .btn-ghost{padding:.7rem 1.8rem;background:transparent;color:var(--text);font-family:'DM Mono',monospace;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border:1.5px solid var(--border);transition:border-color .2s,color .2s;}
+    .btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+    .hero-right{position:relative;background:var(--bg2);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+    .hero-photo-wrap{width:100%;height:100%;display:flex;align-items:center;justify-content:center;}
+    .hero-photo-wrap img{width:100%;height:100%;object-fit:cover;display:block;}
+    .photo-placeholder{display:flex;flex-direction:column;align-items:center;gap:.8rem;color:var(--muted);text-align:center;padding:2rem;}
+    .photo-placeholder svg{opacity:.3;}
+    .photo-placeholder p{font-size:.82rem;font-family:'DM Mono',monospace;}
+    .photo-upload-btn{position:absolute;bottom:1.5rem;right:1.5rem;font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;padding:.5rem 1rem;background:var(--surface);border:1.5px solid var(--border);cursor:pointer;color:var(--accent);transition:border-color .2s;}
+    .photo-upload-btn:hover{border-color:var(--accent);}
+ 
+    /* SECTIONS */
+    section{border-top:1px solid var(--border);}
+    section.alt-bg{background:var(--bg2);}
+    .section-inner{max-width:1100px;margin:0 auto;padding:6rem 3rem;}
+    .section-label{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--accent2);letter-spacing:.22em;text-transform:uppercase;margin-bottom:.5rem;}
+    h2{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);letter-spacing:-.01em;margin-bottom:3rem;line-height:1.15;}
+ 
+    /* ACHIEVEMENTS */
+    .achievements-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.5rem;}
+    .ach-card{background:var(--surface);border:1.5px solid var(--border);padding:2rem;transition:border-color .25s,transform .25s,box-shadow .25s;}
+    .ach-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 8px 24px rgba(37,99,168,.1);}
+    .ach-icon{font-size:1.6rem;margin-bottom:1rem;}
+    .ach-card h3{font-size:.9rem;font-weight:600;color:var(--accent);margin-bottom:.5rem;}
+    .ach-card p{font-size:.88rem;color:var(--muted);line-height:1.7;}
+ 
+    /* ABOUT */
+    .about-grid{display:grid;grid-template-columns:1fr 360px;gap:4rem;align-items:start;}
+    .about-text p{font-size:.95rem;color:var(--muted);line-height:1.8;margin-bottom:1rem;}
+    .about-text strong{color:var(--text);font-weight:600;}
+    .about-photo-frame{position:relative;}
+    .about-photo-frame::after{content:'';position:absolute;bottom:-10px;right:-10px;width:100%;height:100%;border:2px solid var(--accent);z-index:0;}
+    .about-photo-inner{position:relative;z-index:1;width:100%;aspect-ratio:3/4;background:var(--bg2);overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+    .about-photo-inner img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;}
+    .slot-label{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--muted);text-align:center;padding:1rem;}
+    .slot-upload-btn{margin-top:.6rem;font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;padding:.4rem .9rem;background:transparent;border:1.5px solid var(--border);cursor:pointer;color:var(--accent);transition:border-color .2s;}
+    .slot-upload-btn:hover{border-color:var(--accent);}
+ 
+    /* EXPERIENCE */
+    .timeline{position:relative;padding-left:1.5rem;}
+    .timeline::before{content:'';position:absolute;left:0;top:.5rem;bottom:0;width:1.5px;background:linear-gradient(to bottom,var(--accent),transparent);}
+    .tl-item{position:relative;margin-bottom:3rem;padding-left:1.5rem;}
+    .tl-item::before{content:'';position:absolute;left:-2rem;top:.45rem;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--accent-lt);}
+    .tl-meta{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.3rem;margin-bottom:.25rem;}
+    .tl-role{font-size:1.05rem;font-weight:600;}
+    .tl-date{font-family:'DM Mono',monospace;font-size:.75rem;color:var(--accent);}
+    .tl-company{font-size:.85rem;color:var(--muted);margin-bottom:.9rem;}
+    .tl-bullets{list-style:none;display:flex;flex-direction:column;gap:.45rem;}
+    .tl-bullets li{font-size:.88rem;color:var(--muted);padding-left:1.1rem;position:relative;line-height:1.65;}
+    .tl-bullets li::before{content:'→';position:absolute;left:0;color:var(--accent2);}
+ 
+    /* SKILLS */
+    .skills-sections{display:flex;flex-direction:column;gap:2.5rem;}
+    .skill-group h3{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent2);margin-bottom:1rem;padding-bottom:.4rem;border-bottom:1.5px solid var(--border);}
+    .skill-tags{display:flex;flex-wrap:wrap;gap:.5rem;}
+    .skill-tag{font-family:'DM Mono',monospace;font-size:.75rem;letter-spacing:.04em;padding:.35rem .85rem;background:var(--tag-bg);border:1.5px solid var(--border);color:var(--text);transition:border-color .2s,color .2s,background .2s;}
+    .skill-tag:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-lt);}
+ 
+    /* GALLERY */
+    .gallery-intro{font-size:.95rem;color:var(--muted);margin-bottom:2rem;max-width:540px;line-height:1.7;}
+    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.2rem;}
+    .gallery-slot{position:relative;aspect-ratio:4/3;background:var(--surface);border:1.5px dashed var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;cursor:pointer;transition:border-color .2s;}
+    .gallery-slot:hover{border-color:var(--accent);}
+    .gallery-slot img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;}
+    .slot-inner{display:flex;flex-direction:column;align-items:center;gap:.6rem;color:var(--muted);pointer-events:none;}
+    .slot-inner svg{opacity:.4;}
+    .slot-inner span{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;}
+    .slot-remove{position:absolute;top:.5rem;right:.5rem;background:rgba(255,255,255,.92);border:1px solid var(--border);font-size:.7rem;padding:.2rem .5rem;cursor:pointer;font-family:'DM Mono',monospace;color:var(--accent2);display:none;z-index:10;}
+    .gallery-slot:hover .slot-remove{display:block;}
+    .slot-caption{position:absolute;bottom:0;left:0;right:0;background:rgba(255,255,255,.9);padding:.4rem .7rem;font-size:.78rem;color:var(--text);display:none;}
+    .gallery-slot.has-img .slot-caption{display:block;}
+    .cap-input{width:100%;border:none;background:transparent;font-family:'DM Sans',sans-serif;font-size:.78rem;color:var(--text);outline:none;}
+    .add-gallery-btn{margin-top:1.2rem;display:inline-flex;align-items:center;gap:.5rem;font-family:'DM Mono',monospace;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;padding:.6rem 1.4rem;background:transparent;border:1.5px solid var(--border);cursor:pointer;color:var(--accent);transition:border-color .2s;}
+    .add-gallery-btn:hover{border-color:var(--accent);}
+ 
+    /* EDUCATION */
+    .edu-list{display:flex;flex-direction:column;gap:1.1rem;}
+    .edu-item{background:var(--surface);border:1.5px solid var(--border);padding:1.5rem 2rem;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.5rem;transition:border-color .2s;}
+    .edu-item:hover{border-color:var(--accent);}
+    .edu-degree{font-size:.95rem;font-weight:600;}
+    .edu-school{font-size:.83rem;color:var(--muted);margin-top:.2rem;}
+    .edu-date{font-family:'DM Mono',monospace;font-size:.75rem;color:var(--accent);white-space:nowrap;}
+ 
+    /* PUBLICATIONS */
+    .pub-list{display:flex;flex-direction:column;gap:.9rem;}
+    .pub-item{background:var(--surface);border:1.5px solid var(--border);padding:1.4rem 2rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;transition:border-color .2s;}
+    .pub-item:hover{border-color:var(--accent2);}
+    .pub-title{font-size:.9rem;font-weight:500;line-height:1.55;flex:1;}
+    .pub-year{font-family:'DM Mono',monospace;font-size:.78rem;color:var(--accent2);white-space:nowrap;}
+ 
+    /* CONTACT */
+    #contact .section-inner{text-align:center;}
+    #contact h2{margin-bottom:1rem;}
+    .contact-lead{font-size:.95rem;color:var(--muted);margin-bottom:2.5rem;}
+    .contact-row{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;}
+    .contact-link{font-family:'DM Mono',monospace;font-size:.8rem;letter-spacing:.08em;color:var(--muted);text-decoration:none;padding:.65rem 1.4rem;border:1.5px solid var(--border);transition:all .2s;}
+    .contact-link:hover{border-color:var(--accent);color:var(--accent);}
+ 
+    footer{border-top:1px solid var(--border);text-align:center;padding:2rem;font-family:'DM Mono',monospace;font-size:.72rem;color:var(--muted);}
+ 
+    @keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity .55s,transform .55s;}
+    .reveal.visible{opacity:1;transform:none;}
+ 
+    @media(max-width:860px){
+      #hero{grid-template-columns:1fr;}
+      .hero-right{min-height:320px;}
+      .about-grid{grid-template-columns:1fr;}
+      nav{padding:0 1.5rem;}
+      .nav-links{gap:1rem;}
+      .nav-links a{font-size:.72rem;}
+      .section-inner{padding:4rem 1.5rem;}
+    }
+  </style>
+</head>
+<body>
+ 
+<nav>
+  <span class="nav-logo">Utku Akinci</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#publications">Papers</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+ 
+<!-- HERO -->
+<div id="hero" style="border-top:none;">
+  <div class="hero-left">
+    <p class="hero-eyebrow">// Bremen, Germany · Open to opportunities</p>
+    <h1>UTKU<br><em>AKINCI</em></h1>
+    <p class="hero-role">Computer Scientist &amp; Software Engineer</p>
+    <p class="hero-desc">Specializing in autonomous systems, space robotics, and embedded software development. Currently a Research Assistant at <strong>DFKI Space Robotics Team</strong>.</p>
+    <div class="hero-cta">
+      <a href="mailto:utku_akinci@hotmail.com" class="btn-primary">Get in touch</a>
+      <a href="#experience" class="btn-ghost">View my work ↓</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-photo-wrap" id="heroPhotoWrap">
+      <div class="photo-placeholder" id="heroPlaceholder">
+        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <p>Hero / profile photo</p>
+      </div>
+      <img id="heroImg" src="" alt="" style="display:none;width:100%;height:100%;object-fit:cover;" />
+    </div>
+    <input type="file" id="heroPhotoInput" accept="image/*" style="display:none">
+    <button class="photo-upload-btn" onclick="document.getElementById('heroPhotoInput').click()">+ Upload Photo</button>
+  </div>
+</div>
+ 
+<!-- ACHIEVEMENTS -->
+<section>
+  <div class="section-inner">
+    <p class="section-label">// highlights</p>
+    <h2>Key Achievements</h2>
+    <div class="achievements-grid">
+      <div class="ach-card reveal"><div class="ach-icon">🛰️</div><h3>Space Systems &amp; Standardization</h3><p>SOTA research on standard interfaces for spacecraft. Co-authored publications at IAC 2025 and ASTRA 2025.</p></div>
+      <div class="ach-card reveal"><div class="ach-icon">⚙️</div><h3>Embedded Systems &amp; Testing</h3><p>Designed unit test environments for ARM Cortex-M7 and integration testing setups with Raspberry Pi &amp; CANbus.</p></div>
+      <div class="ach-card reveal"><div class="ach-icon">🌕</div><h3>Autonomous Navigation</h3><p>Built spatial forecast models with Python &amp; QGIS. Curated lunar datasets for micro-rover navigation systems.</p></div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ABOUT -->
+<section id="about" class="alt-bg">
+  <div class="section-inner">
+    <p class="section-label">// about me</p>
+    <h2>Who I Am</h2>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>I'm a <strong>Computer Scientist and Mechatronics Engineer</strong> based in Bremen, Germany, with a background spanning robotics, embedded systems, and data science.</p>
+        <p>At DFKI's Space Robotics Team, I work on everything from spacecraft interface standardization to autonomous navigation for lunar micro-rovers. I care deeply about building systems that work reliably at the edge — whether that's orbit or the surface of the Moon.</p>
+        <p>Before research, I co-founded <strong>SKYTECH</strong> in Istanbul — a hardware startup where I learned first-hand what it takes to go from idea to prototype to business.</p>
+        <p>I speak English fluently, Turkish natively, and I'm learning German. I hold an MSc from Constructor University and a BSc in Mechatronics from Bahçeşehir University.</p>
+      </div>
+      <div class="about-photo-frame reveal">
+        <div class="about-photo-inner" id="aboutPhotoInner">
+          <div id="aboutPlaceholder" style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:1.5rem;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".35"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <p class="slot-label">Portrait photo</p>
+            <button class="slot-upload-btn" onclick="document.getElementById('aboutPhotoInput').click()">+ Upload</button>
+          </div>
+          <img id="aboutImg" src="" alt="" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+        </div>
+        <input type="file" id="aboutPhotoInput" accept="image/*" style="display:none">
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <p class="section-label">// work experience</p>
+    <h2>Where I've Worked</h2>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-meta"><span class="tl-role">Research Assistant</span><span class="tl-date">Mar 2024 — Present</span></div>
+        <p class="tl-company">DFKI (Space Robotics Team) · Bremen, Germany</p>
+        <ul class="tl-bullets">
+          <li><strong>SpaceUSB:</strong> SOTA study on standard spacecraft interfaces — accepted for peer-reviewed journal.</li>
+          <li>EDA on standard interface data; technical visualization for project partners.</li>
+          <li><strong>SamlerKI:</strong> Labeled in-house lunar datasets for micro-rover autonomous navigation.</li>
+          <li>Designed ARM Cortex-M7 unit test environment; payload subsystem SW support.</li>
+          <li><strong>Modkom:</strong> Raspberry Pi + CANbus integration test environment for electromechanical interfaces.</li>
+        </ul>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-meta"><span class="tl-role">Founder &amp; Product Lead</span><span class="tl-date">Sep 2021 — Sep 2022</span></div>
+        <p class="tl-company">SKYTECH · Istanbul, Turkey</p>
+        <ul class="tl-bullets">
+          <li>Developed a comprehensive business plan integrating marketing, production, and financial analysis.</li>
+          <li>Directed prototype development from component selection through modular system design.</li>
+        </ul>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-meta"><span class="tl-role">R&amp;D Engineer Intern</span><span class="tl-date">Feb 2020 — Jun 2020</span></div>
+        <p class="tl-company">Inovatink · Istanbul, Turkey</p>
+        <ul class="tl-bullets">
+          <li>Engineered an air pollution predictive model using Python data analytics and QGIS.</li>
+          <li>Utilized Land Use Regression models to map urban pollutant concentration levels.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- SKILLS -->
+<section id="skills" class="alt-bg">
+  <div class="section-inner">
+    <p class="section-label">// tools &amp; technologies</p>
+    <h2>Skills</h2>
+    <div class="skills-sections">
+      <div class="skill-group reveal">
+        <h3>Programming Languages</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">C</span><span class="skill-tag">C++</span><span class="skill-tag">Python</span><span class="skill-tag">HTML</span><span class="skill-tag">CSS</span><span class="skill-tag">Bash</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <h3>AI / Machine Learning</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">PyTorch</span><span class="skill-tag">TensorFlow</span><span class="skill-tag">RAY</span><span class="skill-tag">CUDA</span><span class="skill-tag">Pandas</span><span class="skill-tag">NumPy</span><span class="skill-tag">Matplotlib</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <h3>Embedded Systems &amp; Hardware</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">ARM Cortex-M7</span><span class="skill-tag">ARM Cortex-A53</span><span class="skill-tag">Cortex-A72</span><span class="skill-tag">CANbus</span><span class="skill-tag">Raspberry Pi</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <h3>CAD / Simulation</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">SolidWorks</span><span class="skill-tag">CATIA</span><span class="skill-tag">Cura</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <h3>DevOps &amp; Tooling</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">GitLab</span><span class="skill-tag">GitHub</span><span class="skill-tag">CI/CD</span><span class="skill-tag">Linux</span><span class="skill-tag">CMake</span><span class="skill-tag">Make</span><span class="skill-tag">Docker</span><span class="skill-tag">ROS</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <h3>GUI &amp; Design Tools</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">PyQt5</span><span class="skill-tag">Tkinter</span><span class="skill-tag">Figma</span><span class="skill-tag">QGIS</span><span class="skill-tag">LaTeX</span><span class="skill-tag">Microsoft Office</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <h3>Languages</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">English — Fluent</span><span class="skill-tag">Turkish — Native</span><span class="skill-tag">German — A2</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="section-inner">
+    <p class="section-label">// moments &amp; projects</p>
+    <h2>Gallery</h2>
+    <p class="gallery-intro">Photos from the lab, conferences, and field work. Click a slot to upload an image, then add a caption.</p>
+    <div class="gallery-grid" id="galleryGrid"></div>
+    <button class="add-gallery-btn" id="addGalleryBtn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      Add photo slot
+    </button>
+  </div>
+</section>
+ 
+<!-- EDUCATION -->
+<section id="education" class="alt-bg">
+  <div class="section-inner">
+    <p class="section-label">// academic background</p>
+    <h2>Education</h2>
+    <div class="edu-list">
+      <div class="edu-item reveal"><div><p class="edu-degree">MSc Computer Science &amp; Software Engineering</p><p class="edu-school">Constructor University · Bremen, Germany</p></div><span class="edu-date">Aug 2023 — Aug 2025</span></div>
+      <div class="edu-item reveal"><div><p class="edu-degree">BSc Mechatronics Engineering</p><p class="edu-school">Bahçeşehir University · Istanbul, Turkey</p></div><span class="edu-date">Oct 2016 — Jun 2021</span></div>
+      <div class="edu-item reveal"><div><p class="edu-degree">ESL Preparatory Program</p><p class="edu-school">Mentora College · Washington D.C., United States</p></div><span class="edu-date">Oct 2016 — May 2017</span></div>
+    </div>
+  </div>
+</section>
+ 
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="section-inner">
+    <p class="section-label">// research</p>
+    <h2>Publications</h2>
+    <div class="pub-list">
+      <div class="pub-item reveal"><p class="pub-title">Development of a semi-autonomous micro rover for lunar night survival</p><span class="pub-year">2024</span></div>
+      <div class="pub-item reveal"><p class="pub-title">Towards Sustainable Space Ecosystem: A State of the Art Survey on Standardizing Spacecraft Service Interfaces for Modular Orbital Systems</p><span class="pub-year">2025</span></div>
+      <div class="pub-item reveal"><p class="pub-title">Space USB: defining an enhanced standardization level for Space Standard Interconnects</p><span class="pub-year">2025</span></div>
+      <div class="pub-item reveal"><p class="pub-title">Prototyping and testing System Interconnect standard Interoperable for Orbital services</p><span class="pub-year">2025</span></div>
+      <div class="pub-item reveal"><p class="pub-title">Improving flexibility in modular space robots: An adapter to connect a research-related electromechanical interface with a commercial one</p><span class="pub-year">2025</span></div>
+    </div>
+  </div>
+</section>
+ 
+<!-- CONTACT -->
+<section id="contact" class="alt-bg">
+  <div class="section-inner">
+    <p class="section-label">// get in touch</p>
+    <h2>Let's Connect</h2>
+    <p class="contact-lead">Open to research collaborations, full-time roles, and interesting conversations.</p>
+    <div class="contact-row">
+      <a href="mailto:utku_akinci@hotmail.com" class="contact-link">✉ utku_akinci@hotmail.com</a>
+      <a href="https://linkedin.com" target="_blank" class="contact-link">◈ LinkedIn</a>
+      <a href="tel:+4917630189678" class="contact-link">☎ +49 176 301 896 78</a>
+    </div>
+  </div>
+</section>
+ 
+<footer>© 2025 Utku Akinci · Bremen, Germany</footer>
+ 
+<script>
+  /* Scroll reveal */
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e,i) => {
+      if (e.isIntersecting) { setTimeout(()=>e.target.classList.add('visible'), i*70); obs.unobserve(e.target); }
+    });
+  }, {threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+ 
+  /* Hero photo */
+  document.getElementById('heroPhotoInput').addEventListener('change', function(e) {
+    const file = e.target.files[0]; if (!file) return;
+    const img = document.getElementById('heroImg');
+    img.src = URL.createObjectURL(file); img.style.display='block';
+    document.getElementById('heroPlaceholder').style.display='none';
+  });
+ 
+  /* About photo */
+  document.getElementById('aboutPhotoInput').addEventListener('change', function(e) {
+    const file = e.target.files[0]; if (!file) return;
+    const img = document.getElementById('aboutImg');
+    img.src = URL.createObjectURL(file); img.style.display='block';
+    document.getElementById('aboutPlaceholder').style.display='none';
+  });
+ 
+  /* Gallery */
+  const grid = document.getElementById('galleryGrid');
+  let sc = 0;
+ 
+  function addGallerySlot() {
+    sc++;
+    const id = 'gs'+sc, inputId = 'gi'+sc;
+    const slot = document.createElement('div');
+    slot.className = 'gallery-slot'; slot.id = id;
+    slot.innerHTML =
+      '<input type="file" id="'+inputId+'" accept="image/*" style="display:none">' +
+      '<div class="slot-inner">' +
+        '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>' +
+        '<span>Click to upload</span>' +
+      '</div>' +
+      '<div class="slot-caption"><input class="cap-input" type="text" placeholder="Add a caption…"></div>' +
+      '<button class="slot-remove" onclick="removeSlot(\''+id+'\',event)">✕</button>';
+    slot.addEventListener('click', function(e) {
+      if (e.target.classList.contains('slot-remove')||e.target.classList.contains('cap-input')) return;
+      document.getElementById(inputId).click();
+    });
+    document.getElementById(inputId) && null; // placeholder before append
+    grid.appendChild(slot);
+    document.getElementById(inputId).addEventListener('change', function(e) {
+      const file = e.target.files[0]; if (!file) return;
+      const old = slot.querySelector('img'); if (old) old.remove();
+      const img = document.createElement('img');
+      img.src = URL.createObjectURL(file); img.alt='Gallery photo';
+      slot.prepend(img);
+      slot.querySelector('.slot-inner').style.display='none';
+      slot.classList.add('has-img');
+    });
+  }
+ 
+  function removeSlot(id, e) { e.stopPropagation(); const el=document.getElementById(id); if(el)el.remove(); }
+ 
+  document.getElementById('addGalleryBtn').addEventListener('click', addGallerySlot);
+ 
+  for (let i=0;i<4;i++) addGallerySlot();
+</script>
+</body>
+</html>
