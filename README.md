@@ -1,8 +1,8 @@
-# Utku Akinci — Personal Portfolio Site
+# Personal Portfolio Site
  
 A single-file, static personal portfolio website. HTML, CSS, and JavaScript all live inside `index.html` — no build system or dependencies required.
  
-## Features
+## 🌟 Features
  
 - **Bilingual content (EN/DE)** — Language toggle buttons in the top-right switch between English and German. Text is swapped via JS using `data-en` / `data-de` attributes.
 - **Sections:** Hero, Key Achievements, About (Who I Am), Experience, Skills, Gallery, Education, Publications, Contact
@@ -11,13 +11,15 @@ A single-file, static personal portfolio website. HTML, CSS, and JavaScript all 
 - **Photo placeholders** — Hero and About sections show placeholders when no real photo is set (the "upload" button is currently non-functional — see Future Improvements).
 - **Responsive design** — Mobile-friendly layout with a fixed nav bar, using Google Fonts (DM Serif Display, DM Sans, DM Mono).
 - **Contact links** — `mailto:` link and a LinkedIn link.
-## Tech Stack
+
+## 🛠️ Tech Stack
  
 - Vanilla HTML5 / CSS3 (theming via CSS custom properties)
 - Vanilla JavaScript (no framework)
 - Google Fonts (CDN)
 - Unsplash (gallery images, via CDN)
-## Running
+
+## 🚀 Running
  
 No build step required — just open the file in a browser:
  
@@ -44,7 +46,7 @@ Can be deployed directly to any static hosting service such as GitHub Pages, Net
 - [ ] **Dark mode** — Since CSS custom properties are already in use, adding a `prefers-color-scheme` or manual theme toggle would be relatively easy.
 - [ ] **Cross-browser testing** — Manually test across different browsers and screen sizes, especially the nav and gallery grid on mobile.
 
-## File Structure
+## 🏗️ File Structure
 ```
 .
 └── index.html   # All HTML, CSS, and JS live here
