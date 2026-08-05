@@ -31,7 +31,7 @@ python3 -m http.server
  
 Can be deployed directly to any static hosting service such as GitHub Pages, Netlify, or Vercel.
  
-## Future Development Points
+## 🎯 Future Development Points
  
 - [ ] **Real photo integration** — The Hero and About placeholders are still empty; the "upload" button exists visually but has no functional upload mechanism (needs localStorage or real file handling).
 - [ ] **Gallery images** — Currently using Unsplash stock photos; should be replaced with real project/DFKI/conference photos.
