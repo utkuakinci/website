@@ -31,20 +31,20 @@ Can be deployed directly to any static hosting service such as GitHub Pages, Net
  
 ## Future Development Points
  
-1. **Real photo integration** — The Hero and About placeholders are still empty; the "upload" button exists visually but has no functional upload mechanism (needs localStorage or real file handling).
-2. **Gallery images** — Currently using Unsplash stock photos; should be replaced with real project/DFKI/conference photos.
-3. **Missing LinkedIn link** — `href="https://linkedin.com"` is a placeholder and should be updated with the actual profile URL.
-4. **Content validation** — Dates and titles in Experience, Education, and Publications sections need to stay in sync with the current CV.
-5. **SEO & meta tags** — Missing `<meta name="description">`, Open Graph, and Twitter Card tags, so link previews don't render when shared.
-6. **Accessibility (a11y)** — Could add `alt` text for images, `aria-pressed` on language buttons, `aria-label` on nav, etc.
-7. **Performance** — Review lazy-loading and font-display strategy for Google Fonts and Unsplash images; gallery images could be optimized and served locally.
-8. **Contact form** — Replace `mailto:` with an embedded contact form (e.g. Formspree, Netlify Forms) for a smoother UX.
-9. **Code organization** — As the project grows, CSS/JS could be split into separate files (`styles.css`, `main.js`); the single-file approach may have been chosen for simplicity but adds maintenance cost over time.
-10. **Analytics** — Consider adding privacy-friendly analytics (e.g. Plausible, Umami) for visitor stats.
-11. **Dark mode** — Since CSS custom properties are already in use, adding a `prefers-color-scheme` or manual theme toggle would be relatively easy.
-12. **Cross-browser testing** — Manually test across different browsers and screen sizes, especially the nav and gallery grid on mobile.
+- [ ] **Real photo integration** — The Hero and About placeholders are still empty; the "upload" button exists visually but has no functional upload mechanism (needs localStorage or real file handling).
+- [ ] **Gallery images** — Currently using Unsplash stock photos; should be replaced with real project/DFKI/conference photos.
+- [ ] **Missing LinkedIn link** — `href="https://linkedin.com"` is a placeholder and should be updated with the actual profile URL.
+- [ ] **Content validation** — Dates and titles in Experience, Education, and Publications sections need to stay in sync with the current CV.
+- [ ] **SEO & meta tags** — Missing `<meta name="description">`, Open Graph, and Twitter Card tags, so link previews don't render when shared.
+- [ ] **Accessibility (a11y)** — Could add `alt` text for images, `aria-pressed` on language buttons, `aria-label` on nav, etc.
+- [ ] **Performance** — Review lazy-loading and font-display strategy for Google Fonts and Unsplash images; gallery images could be optimized and served locally.
+- [ ] **Contact form** — Replace `mailto:` with an embedded contact form (e.g. Formspree, Netlify Forms) for a smoother UX.
+- [ ] **Code organization** — As the project grows, CSS/JS could be split into separate files (`styles.css`, `main.js`); the single-file approach may have been chosen for simplicity but adds maintenance cost over time.
+- [ ] **Analytics** — Consider adding privacy-friendly analytics (e.g. Plausible, Umami) for visitor stats.
+- [ ] **Dark mode** — Since CSS custom properties are already in use, adding a `prefers-color-scheme` or manual theme toggle would be relatively easy.
+- [ ] **Cross-browser testing** — Manually test across different browsers and screen sizes, especially the nav and gallery grid on mobile.
+
 ## File Structure
- 
 ```
 .
 └── index.html   # All HTML, CSS, and JS live here
