@@ -49,5 +49,7 @@ Can be deployed directly to any static hosting service such as GitHub Pages, Net
 ## 🏗️ File Structure
 ```
 .
-└── index.html   # All HTML, CSS, and JS live here
+├── images/       # Project assets and images
+├── index.html    # All HTML, CSS, and JS live here
+└── README.md     # Project documentation
 ```
