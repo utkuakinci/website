@@ -2,9 +2,7 @@
  
 A single-file, static personal portfolio website. HTML, CSS, and JavaScript all live inside `index.html` — no build system or dependencies required.
 
-[![Go To Website](https://img.shields.io/badge/utkuakinci.github.io-FF6600?style=for-the-badge&logo=startrek&logoColor=white)](https://utkuakinci.github.io/website/ "Website")
-
-
+[![utkuakinci.github.io](https://img.shields.io/badge/Go_To_Website-FF6600?style=for-the-badge)](https://utkuakinci.github.io/website/ "https://utkuakinci.github.io/website/")
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/akinciutku)
 
 ## 🌟 Features
