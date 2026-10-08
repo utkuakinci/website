@@ -4,6 +4,13 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Utku Akinci — Computer Scientist & Software Engineer</title>
+  <meta name="description" content="Utku Akinci — Computer Scientist &amp; Software Engineer in Bremen, Germany, specializing in autonomous systems, space robotics, and embedded software."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://utkuakinci.github.io/website/"/>
+  <meta property="og:title" content="Utku Akinci — Computer Scientist &amp; Software Engineer"/>
+  <meta property="og:description" content="Autonomous systems, space robotics, and embedded software development. Research Assistant at DFKI Space Robotics Team."/>
+  <meta property="og:image" content="https://utkuakinci.github.io/website/images/utku.jpeg"/>
+  <meta name="twitter:card" content="summary_large_image"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
@@ -276,6 +283,7 @@
           <img id="aboutImg"
                src="images/robot.jpeg"
                alt="Utku Akinci portrait"
+               loading="lazy"
                style="display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
  
         </div>
@@ -504,6 +512,7 @@
     grid.appendChild(slot);
     if (preImg) {
       const img=document.createElement('img');
+      img.loading='lazy';
       img.src=preImg; img.alt=preCaption||'Gallery photo';
       slot.prepend(img);
       slot.querySelector('.slot-inner').style.display='none';
