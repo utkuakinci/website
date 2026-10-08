@@ -90,7 +90,16 @@
     h1 em{font-style:italic;color:var(--accent2);}
     .hero-role{margin-top:1.2rem;font-size:1rem;color:var(--muted);font-weight:300;opacity:0;animation:fadeUp .6s .4s forwards;}
     .hero-desc{margin-top:1.4rem;font-size:.95rem;color:var(--muted);max-width:480px;line-height:1.8;opacity:0;animation:fadeUp .6s .55s forwards;}
-    .hero-cta{margin-top:2.5rem;display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeUp .6s .7s forwards;}
+    .terminal{margin-top:1.8rem;max-width:480px;background:#1b1916;border:1px solid #3a352c;font-family:'DM Mono',monospace;font-size:.76rem;opacity:0;animation:fadeUp .6s .7s forwards;}
+    .term-bar{display:flex;align-items:center;gap:.4rem;padding:.55rem .8rem;border-bottom:1px solid #3a352c;}
+    .term-bar span{width:9px;height:9px;border-radius:50%;background:#4a453b;}
+    .term-bar em{margin-left:.6rem;font-style:normal;font-size:.68rem;color:#8f887b;}
+    .term-body{margin:0;padding:.9rem 1rem;min-height:calc(7 * 1.75em + 1.8rem);font-family:inherit;line-height:1.75;color:#8fb9e8;white-space:pre-wrap;}
+    .term-body .t-prompt{color:#ec8254;}
+    .term-body .t-cmd{color:#ece8df;}
+    .term-cursor{display:inline-block;width:.55em;height:1.05em;margin-left:.1em;background:#ece8df;vertical-align:text-bottom;animation:blink 1s steps(1) infinite;}
+    @keyframes blink{50%{opacity:0;}}
+    .hero-cta{margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeUp .6s .85s forwards;}
     .btn-primary{padding:.7rem 1.8rem;background:var(--accent);color:var(--on-accent);font-family:'DM Mono',monospace;font-size:.78rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:background .2s,transform .2s;}
     .btn-primary:hover{background:var(--accent-hover);transform:translateY(-2px);}
     .btn-ghost{padding:.7rem 1.8rem;background:transparent;color:var(--text);font-family:'DM Mono',monospace;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border:1.5px solid var(--border);transition:border-color .2s,color .2s;}
@@ -265,6 +274,10 @@
        data-de="Spezialisiert auf autonome Systeme, Weltraumrobotik und eingebettete Softwareentwicklung. Derzeit wissenschaftlicher Mitarbeiter beim <strong>DFKI Space Robotics Team</strong>.">
       Specializing in autonomous systems, space robotics, and embedded software development. Currently a Research Assistant at <strong>DFKI Space Robotics Team</strong>.
     </p>
+    <div class="terminal" aria-hidden="true">
+      <div class="term-bar"><span></span><span></span><span></span><em>utku@bremen: ~</em></div>
+      <pre class="term-body" id="termBody"></pre>
+    </div>
     <div class="hero-cta">
       <a href="mailto:utku_akinci@hotmail.com" class="btn-primary" data-en="Get in touch" data-de="Kontakt aufnehmen">Get in touch</a>
       <a href="#projects" class="btn-ghost" data-en="View my work ↓" data-de="Meine Arbeit ↓">View my work ↓</a>
@@ -691,6 +704,40 @@
   }
   preloadedPhotos.forEach(p=>addGallerySlot(p.src, p.caption));
  
+  /* ── HERO TERMINAL ── */
+  /* Commands are typed out one character at a time; their output appears at once. */
+  const termScript = [
+    { cmd: 'cat focus.txt',  out: 'space robotics · embedded systems · autonomous navigation' },
+    { cmd: 'ls stack/',      out: 'c  cpp  python  ros  docker  cortex-m7  canbus' },
+    { cmd: './status --now', out: 'research assistant @ DFKI · open to opportunities' },
+  ];
+  (function runTerminal() {
+    const body=document.getElementById('termBody');
+    const cursor=document.createElement('span'); cursor.className='term-cursor';
+    const instant=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function line(step, done) {
+      const prompt=document.createElement('span'); prompt.className='t-prompt'; prompt.textContent='$ ';
+      const cmd=document.createElement('span'); cmd.className='t-cmd';
+      body.append(prompt, cmd, cursor);
+      const finish=()=>{ cursor.before('\n'+step.out+'\n'); done(); };
+      if (instant) { cmd.textContent=step.cmd; finish(); return; }
+      let i=0;
+      const tick=setInterval(()=>{
+        cmd.textContent=step.cmd.slice(0,++i);
+        if (i>=step.cmd.length) { clearInterval(tick); setTimeout(finish,280); }
+      },55);
+    }
+    function next(n) {
+      if (n>=termScript.length) {
+        const prompt=document.createElement('span'); prompt.className='t-prompt'; prompt.textContent='$ ';
+        cursor.before(prompt);
+        return;
+      }
+      line(termScript[n], ()=>setTimeout(()=>next(n+1), instant?0:450));
+    }
+    setTimeout(()=>next(0), instant?0:1300);
+  })();
+
   /* ── GITHUB REPOS ── */
   /* Latest public repositories, fetched live. The block stays hidden if the request fails. */
   const GH_USER='utkuakinci';
