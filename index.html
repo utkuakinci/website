@@ -100,7 +100,7 @@
  
     /* ── SECTIONS ── */
     section{border-top:1px solid var(--border);}
-    section.alt-bg{background:var(--bg2);}
+    section:nth-of-type(even){background:var(--bg2);}
     .section-inner{max-width:1100px;margin:0 auto;padding:6rem 3rem;}
     .section-label{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--accent2);letter-spacing:.22em;text-transform:uppercase;margin-bottom:.5rem;}
     h2{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);letter-spacing:-.01em;margin-bottom:3rem;line-height:1.15;}
@@ -135,6 +135,28 @@
     .tl-bullets li{font-size:.88rem;color:var(--muted);padding-left:1.1rem;position:relative;line-height:1.65;}
     .tl-bullets li::before{content:'→';position:absolute;left:0;color:var(--accent2);}
  
+    /* ── PROJECTS ── */
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;}
+    .proj-card{background:var(--surface);border:1.5px solid var(--border);padding:1.8rem;display:flex;flex-direction:column;transition:border-color .25s,transform .25s;}
+    .proj-card:hover{border-color:var(--accent);transform:translateY(-4px);}
+    .proj-meta{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2);margin-bottom:.6rem;}
+    .proj-card h3{font-family:'DM Serif Display',serif;font-size:1.4rem;font-weight:400;margin-bottom:.6rem;}
+    .proj-card p{font-size:.88rem;color:var(--muted);line-height:1.7;}
+    .proj-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin:1.1rem 0 1.3rem;}
+    .proj-tags span{font-family:'DM Mono',monospace;font-size:.68rem;padding:.2rem .55rem;background:var(--tag-bg);border:1px solid var(--border);}
+    .proj-links{margin-top:auto;display:flex;gap:1.2rem;flex-wrap:wrap;}
+    .text-link{font-family:'DM Mono',monospace;font-size:.75rem;letter-spacing:.04em;color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s;}
+    .text-link:hover{border-bottom-color:var(--accent);}
+    .repo-block{margin-top:3.5rem;}
+    .repo-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem;padding-bottom:.4rem;border-bottom:1.5px solid var(--border);}
+    .repo-head h3{font-family:'DM Mono',monospace;font-size:.7rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--accent2);}
+    .repo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;}
+    .repo-card{display:flex;flex-direction:column;gap:.5rem;padding:1.2rem 1.4rem;background:var(--surface);border:1.5px solid var(--border);text-decoration:none;color:inherit;transition:border-color .2s;}
+    .repo-card:hover{border-color:var(--accent);}
+    .repo-name{font-family:'DM Mono',monospace;font-size:.85rem;font-weight:500;color:var(--accent);overflow-wrap:anywhere;}
+    .repo-desc{font-size:.82rem;color:var(--muted);line-height:1.6;flex:1;}
+    .repo-meta{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--muted);}
+
     /* ── SKILLS ── */
     .skills-sections{display:flex;flex-direction:column;gap:2.5rem;}
     .skill-group h3{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent2);margin-bottom:1rem;padding-bottom:.4rem;border-bottom:1.5px solid var(--border);}
@@ -203,6 +225,7 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="#about" data-en="About" data-de="Über mich">About</a></li>
       <li><a href="#experience" data-en="Experience" data-de="Erfahrung">Experience</a></li>
+      <li><a href="#projects" data-en="Projects" data-de="Projekte">Projects</a></li>
       <li><a href="#skills" data-en="Skills" data-de="Kenntnisse">Skills</a></li>
       <li><a href="#gallery" data-en="Gallery" data-de="Galerie">Gallery</a></li>
       <li><a href="#publications" data-en="Papers" data-de="Publikationen">Papers</a></li>
@@ -285,7 +308,7 @@
 </section>
  
 <!-- ABOUT -->
-<section id="about" class="alt-bg">
+<section id="about">
   <div class="section-inner">
     <p class="section-label" data-en="// about me" data-de="// über mich">// about me</p>
     <h2 data-en="Who I Am" data-de="Wer ich bin">Who I Am</h2>
@@ -378,8 +401,66 @@
   </div>
 </section>
  
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <p class="section-label" data-en="// selected work" data-de="// ausgewählte arbeiten">// selected work</p>
+    <h2 data-en="Projects" data-de="Projekte">Projects</h2>
+    <div class="projects-grid">
+      <article class="proj-card reveal">
+        <p class="proj-meta" data-en="DFKI · EU Horizon Europe · 2024 — 2025" data-de="DFKI · EU Horizon Europe · 2024 — 2025">DFKI · EU Horizon Europe · 2024 — 2025</p>
+        <h3>Space USB</h3>
+        <p data-en="A single European standard for the interconnects that let spacecraft modules dock, share power, and exchange data in orbit. I surveyed the state of the art in spacecraft service interfaces, analysed the interface data, and built the technical visualizations for the project partners."
+           data-de="Ein einheitlicher europäischer Standard für Schnittstellen, über die Raumfahrzeugmodule im Orbit andocken sowie Energie und Daten austauschen. Ich habe den Stand der Technik bei Raumfahrzeug-Serviceschnittstellen erhoben, die Schnittstellendaten analysiert und die technischen Visualisierungen für die Projektpartner erstellt.">A single European standard for the interconnects that let spacecraft modules dock, share power, and exchange data in orbit. I surveyed the state of the art in spacecraft service interfaces, analysed the interface data, and built the technical visualizations for the project partners.</p>
+        <div class="proj-tags"><span>Standard Interconnects</span><span>In-Orbit Servicing</span><span>EDA</span></div>
+        <div class="proj-links">
+          <a class="text-link" href="https://robotik.dfki-bremen.de/en/research/projects/space-usb" target="_blank" rel="noopener" data-en="Project page ↗" data-de="Projektseite ↗">Project page ↗</a>
+          <a class="text-link" href="#publications" data-en="Papers ↓" data-de="Publikationen ↓">Papers ↓</a>
+        </div>
+      </article>
+      <article class="proj-card reveal">
+        <p class="proj-meta" data-en="DFKI · Lunar micro-rover" data-de="DFKI · Mond-Mikro-Rover">DFKI · Lunar micro-rover</p>
+        <h3>SAMLER-KI</h3>
+        <p data-en="A semi-autonomous micro-rover built to survive the lunar night. I labeled the in-house lunar datasets used for autonomous navigation, designed the unit test environment for the ARM Cortex-M7 firmware, and supported the payload subsystem software."
+           data-de="Ein teilautonomer Mikro-Rover, der die Mondnacht überstehen soll. Ich habe die hauseigenen Mond-Datensätze für die autonome Navigation annotiert, die Unit-Test-Umgebung für die ARM-Cortex-M7-Firmware entworfen und die Software des Nutzlastsubsystems unterstützt.">A semi-autonomous micro-rover built to survive the lunar night. I labeled the in-house lunar datasets used for autonomous navigation, designed the unit test environment for the ARM Cortex-M7 firmware, and supported the payload subsystem software.</p>
+        <div class="proj-tags"><span>ARM Cortex-M7</span><span>Unit Testing</span><span>Dataset Labeling</span></div>
+        <div class="proj-links">
+          <a class="text-link" href="https://robotik.dfki-bremen.de/en/research/projects/samler-ki" target="_blank" rel="noopener" data-en="Project page ↗" data-de="Projektseite ↗">Project page ↗</a>
+          <a class="text-link" href="#publications" data-en="Paper ↓" data-de="Publikation ↓">Paper ↓</a>
+        </div>
+      </article>
+      <article class="proj-card reveal">
+        <p class="proj-meta" data-en="DFKI · Modular space robotics" data-de="DFKI · Modulare Weltraumrobotik">DFKI · Modular space robotics</p>
+        <h3>MODKOM</h3>
+        <p data-en="A construction kit of interchangeable modules for space robots. I built the integration test environment for its electromechanical interfaces on Raspberry Pi and CANbus."
+           data-de="Ein Baukasten aus austauschbaren Modulen für Weltraumroboter. Ich habe die Integrationstestumgebung für die elektromechanischen Schnittstellen mit Raspberry Pi und CANbus aufgebaut.">A construction kit of interchangeable modules for space robots. I built the integration test environment for its electromechanical interfaces on Raspberry Pi and CANbus.</p>
+        <div class="proj-tags"><span>Raspberry Pi</span><span>CANbus</span><span>Integration Testing</span></div>
+        <div class="proj-links">
+          <a class="text-link" href="https://robotik.dfki-bremen.de/en/research/projects/modkom" target="_blank" rel="noopener" data-en="Project page ↗" data-de="Projektseite ↗">Project page ↗</a>
+          <a class="text-link" href="#publications" data-en="Paper ↓" data-de="Publikation ↓">Paper ↓</a>
+        </div>
+      </article>
+      <article class="proj-card reveal">
+        <p class="proj-meta" data-en="Inovatink · 2020" data-de="Inovatink · 2020">Inovatink · 2020</p>
+        <h3 data-en="Air Pollution Forecast Model" data-de="Prognosemodell für Luftverschmutzung">Air Pollution Forecast Model</h3>
+        <p data-en="A predictive model that maps urban pollutant concentrations, combining Land Use Regression with spatial data in Python and QGIS."
+           data-de="Ein Vorhersagemodell, das urbane Schadstoffkonzentrationen kartiert und Land-Use-Regression mit Geodaten in Python und QGIS verbindet.">A predictive model that maps urban pollutant concentrations, combining Land Use Regression with spatial data in Python and QGIS.</p>
+        <div class="proj-tags"><span>Python</span><span>QGIS</span><span>Land Use Regression</span></div>
+      </article>
+    </div>
+
+    <div class="repo-block" id="repoBlock" hidden>
+      <div class="repo-head">
+        <h3 data-en="Latest on GitHub" data-de="Aktuelles auf GitHub">Latest on GitHub</h3>
+        <a class="text-link" href="https://github.com/utkuakinci?tab=repositories" target="_blank" rel="noopener" data-en="All repositories ↗" data-de="Alle Repositories ↗">All repositories ↗</a>
+      </div>
+      <div class="repo-grid" id="repoGrid"></div>
+    </div>
+  </div>
+</section>
+
 <!-- SKILLS -->
-<section id="skills" class="alt-bg">
+<section id="skills">
   <div class="section-inner">
     <p class="section-label" data-en="// tools &amp; technologies" data-de="// werkzeuge &amp; technologien">// tools &amp; technologies</p>
     <h2 data-en="Skills" data-de="Kenntnisse">Skills</h2>
@@ -443,7 +524,7 @@
 </section>
  
 <!-- EDUCATION -->
-<section id="education" class="alt-bg">
+<section id="education">
   <div class="section-inner">
     <p class="section-label" data-en="// academic background" data-de="// akademischer hintergrund">// academic background</p>
     <h2 data-en="Education" data-de="Ausbildung">Education</h2>
@@ -489,7 +570,7 @@
 </section>
  
 <!-- CONTACT -->
-<section id="contact" class="alt-bg">
+<section id="contact">
   <div class="section-inner">
     <p class="section-label" data-en="// get in touch" data-de="// kontakt">// get in touch</p>
     <h2 data-en="Let's Connect" data-de="Kontakt aufnehmen">Let's Connect</h2>
@@ -561,6 +642,35 @@
   }
   preloadedPhotos.forEach(p=>addGallerySlot(p.src, p.caption));
  
+  /* ── GITHUB REPOS ── */
+  /* Latest public repositories, fetched live. The block stays hidden if the request fails. */
+  const GH_USER='utkuakinci';
+  function renderRepos(repos) {
+    const repoGrid=document.getElementById('repoGrid');
+    repos.forEach(r => {
+      const card=document.createElement('a');
+      card.className='repo-card'; card.href=r.html_url; card.target='_blank'; card.rel='noopener';
+      [['repo-name',r.name],['repo-desc',r.description||''],['repo-meta',[r.language,'★ '+r.stars].filter(Boolean).join(' · ')]]
+        .forEach(([cls,text])=>{const s=document.createElement('span');s.className=cls;s.textContent=text;card.appendChild(s);});
+      repoGrid.appendChild(card);
+    });
+    document.getElementById('repoBlock').hidden=!repos.length;
+  }
+  function loadRepos() {
+    let cached; try{cached=JSON.parse(sessionStorage.getItem('gh-repos'));}catch(e){}
+    if (Array.isArray(cached)) { renderRepos(cached); return; }
+    fetch('https://api.github.com/users/'+GH_USER+'/repos?sort=pushed&per_page=30')
+      .then(res=>res.ok?res.json():Promise.reject(res.status))
+      .then(data => {
+        const repos=data.filter(r=>!r.fork&&r.name!==GH_USER).slice(0,6)
+          .map(r=>({name:r.name,html_url:r.html_url,description:r.description,language:r.language,stars:r.stargazers_count}));
+        try{sessionStorage.setItem('gh-repos',JSON.stringify(repos));}catch(e){}
+        renderRepos(repos);
+      })
+      .catch(()=>{});
+  }
+  loadRepos();
+
   /* ── NAV: MOBILE MENU + ACTIVE SECTION ── */
   const navLinks=document.getElementById('navLinks');
   const navToggle=document.getElementById('navToggle');
