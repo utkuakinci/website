@@ -8,10 +8,14 @@ Personal portfolio of Utku Akinci — a single-file, static website. HTML, CSS, 
 ## 🌟 Features
 
 - **Bilingual content (EN/DE)** — The toggle in the top-right switches between English and German without reloading the page.
-- **Sections** — Hero, Key Achievements, About, Experience, Skills, Gallery, Education, Publications, Contact.
+- **Dark mode** — Follows the OS preference on first visit; the toggle in the nav overrides it and the choice is remembered.
+- **Sections** — Hero, Key Achievements, About, Experience, Projects, Skills, Gallery, Education, Publications, Contact.
+- **Hero terminal** — A small terminal card that types out a few commands on load.
+- **Projects** — Hand-written project cards, plus the latest public repositories fetched live from the GitHub API.
+- **Publications** — Each entry lists authors, venue, and a link to the record or DOI.
 - **Scroll-reveal animations** — Elements with the `.reveal` class fade in on scroll via `IntersectionObserver`.
 - **Gallery** — Generated from a small array in the script, with a caption per language.
-- **Responsive design** — Fixed nav bar and a single-column layout below 860px.
+- **Responsive design** — Fixed nav bar that highlights the current section and collapses into a menu below 1100px; single-column layout below 860px.
 - **Link previews** — Meta description, Open Graph, and Twitter Card tags.
 
 ## 🛠️ Tech Stack
@@ -23,6 +27,8 @@ Personal portfolio of Utku Akinci — a single-file, static website. HTML, CSS, 
 - Vanilla HTML5 / CSS3 (theming via CSS custom properties in `:root`)
 - Vanilla JavaScript (no framework)
 - Google Fonts via CDN (DM Serif Display, DM Sans, DM Mono)
+- Devicon via CDN (technology icons in the Skills section)
+- GitHub REST API (public repository list, no token needed)
 - Unsplash via CDN (placeholder gallery images)
 
 ## 🚀 Running
@@ -52,7 +58,13 @@ Elements without these attributes (e.g. publication titles) stay the same in bot
 { src: 'images/lunisrover.jpeg', caption: { en: 'Lab work at DFKI', de: 'Laborarbeit am DFKI' } },
 ```
 
-**Colors.** All colors are CSS custom properties at the top of the `<style>` block.
+**Projects.** Each project is an `<article class="proj-card">` in the Projects section; copy one to add another. The "Latest on GitHub" list below them needs no upkeep: it shows the six most recently pushed public repositories of the account in `GH_USER`, skipping forks. If the GitHub request fails, the list is simply hidden.
+
+**Hero terminal.** The commands and their output are the `termScript` array in the script.
+
+**Skill icons.** A tag gets an icon from an `<i class="devicon-…">` element inside it; class names are listed at <https://devicon.dev>. Tags without a matching icon stay text-only.
+
+**Colors.** All colors are CSS custom properties at the top of the `<style>` block: `:root` holds the light theme and `:root[data-theme="dark"]` the dark one. Add new colors to both.
 
 ## 🌐 Deployment
 
@@ -65,6 +77,7 @@ If the URL changes, update the `og:url` and `og:image` meta tags in `index.html`
 ```
 .
 ├── images/       # Photos used by the hero, about, and gallery sections
+├── favicon.svg   # Browser tab icon
 ├── index.html    # All HTML, CSS, and JS live here
 └── README.md     # Project documentation
 ```
@@ -75,7 +88,8 @@ If the URL changes, update the `og:url` and `og:image` meta tags in `index.html`
 - [ ] **Content validation** — Keep dates and titles in Experience, Education, and Publications in sync with the current CV.
 - [ ] **Accessibility (a11y)** — Add `aria-pressed` on the language buttons, `aria-label` on the nav, and check color contrast.
 - [ ] **Performance** — Compress the images in `images/` and review the font-loading strategy.
-- [ ] **Dark mode** — Colors are already CSS custom properties, so a `prefers-color-scheme` variant or a manual toggle is a small step.
+- [ ] **CV download** — Add the CV as a PDF and link it from the hero and contact sections.
+- [ ] **Custom domain** — Point a domain at GitHub Pages, then update the `og:url` and `og:image` tags.
 - [ ] **Contact form** — Replace `mailto:` with an embedded form (e.g. Formspree, Netlify Forms).
 - [ ] **Code organization** — Split CSS/JS into `styles.css` and `main.js` if the page keeps growing.
 - [ ] **Analytics** — Consider privacy-friendly analytics (e.g. Plausible, Umami).
