@@ -10,10 +10,11 @@ A single-file, static personal portfolio website. HTML, CSS, and JavaScript all 
 - **Bilingual content (EN/DE)** — Language toggle buttons in the top-right switch between English and German. Text is swapped via JS using `data-en` / `data-de` attributes.
 - **Sections:** Hero, Key Achievements, About (Who I Am), Experience, Skills, Gallery, Education, Publications, Contact
 - **Scroll-reveal animations** — Elements with the `.reveal` class fade/animate in on scroll via `IntersectionObserver`.
-- **Gallery** — Preloaded photos from Unsplash plus user-addable slots.
-- **Photo placeholders** — Hero and About sections show placeholders when no real photo is set (the "upload" button is currently non-functional — see Future Improvements).
+- **Gallery** — Rendered from the `preloadedPhotos` array in `index.html`; each entry has a `src` and an EN/DE caption. Mix of local photos (`images/`) and Unsplash placeholders.
+- **Photos** — Hero and About photos are served from `images/`; change the `src` of `#heroImg` / `#aboutImg` to swap them.
 - **Responsive design** — Mobile-friendly layout with a fixed nav bar, using Google Fonts (DM Serif Display, DM Sans, DM Mono).
-- **Contact links** — `mailto:` link and a LinkedIn link.
+- **Contact links** — `mailto:`, LinkedIn, and phone links.
+- **Link previews** — Meta description, Open Graph, and Twitter Card tags.
 
 ## 🛠️ Tech Stack
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
@@ -39,13 +40,10 @@ Can be deployed directly to any static hosting service such as GitHub Pages, Net
  
 ## 🎯 Future Development Points
  
-- [ ] **Real photo integration** — The Hero and About placeholders are still empty; the "upload" button exists visually but has no functional upload mechanism (needs localStorage or real file handling).
-- [ ] **Gallery images** — Currently using Unsplash stock photos; should be replaced with real project/DFKI/conference photos.
-- [ ] **Missing LinkedIn link** — `href="https://linkedin.com"` is a placeholder and should be updated with the actual profile URL.
+- [ ] **Gallery images** — Two slots still use Unsplash stock photos; should be replaced with real project/DFKI/conference photos.
 - [ ] **Content validation** — Dates and titles in Experience, Education, and Publications sections need to stay in sync with the current CV.
-- [ ] **SEO & meta tags** — Missing `<meta name="description">`, Open Graph, and Twitter Card tags, so link previews don't render when shared.
-- [ ] **Accessibility (a11y)** — Could add `alt` text for images, `aria-pressed` on language buttons, `aria-label` on nav, etc.
-- [ ] **Performance** — Review lazy-loading and font-display strategy for Google Fonts and Unsplash images; gallery images could be optimized and served locally.
+- [ ] **Accessibility (a11y)** — Could add `aria-pressed` on language buttons, `aria-label` on nav, etc.
+- [ ] **Performance** — Below-the-fold images are lazy-loaded; remaining gallery images could be optimized and served locally.
 - [ ] **Contact form** — Replace `mailto:` with an embedded contact form (e.g. Formspree, Netlify Forms) for a smoother UX.
 - [ ] **Code organization** — As the project grows, CSS/JS could be split into separate files (`styles.css`, `main.js`); the single-file approach may have been chosen for simplicity but adds maintenance cost over time.
 - [ ] **Analytics** — Consider adding privacy-friendly analytics (e.g. Plausible, Umami) for visitor stats.
