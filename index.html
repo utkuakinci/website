@@ -187,9 +187,16 @@
  
     /* ── PUBLICATIONS ── */
     .pub-list{display:flex;flex-direction:column;gap:.9rem;}
-    .pub-item{background:var(--surface);border:1.5px solid var(--border);padding:1.4rem 2rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;transition:border-color .2s;}
+    .pub-item{background:var(--surface);border:1.5px solid var(--border);padding:1.4rem 2rem;display:flex;justify-content:space-between;align-items:flex-start;gap:1rem 2rem;flex-wrap:wrap;transition:border-color .2s;}
     .pub-item:hover{border-color:var(--accent2);}
-    .pub-title{font-size:.9rem;font-weight:500;line-height:1.55;flex:1;}
+    .pub-body{flex:1;min-width:240px;}
+    .pub-title{font-size:.95rem;font-weight:500;line-height:1.5;}
+    .pub-title a{color:inherit;text-decoration:none;transition:color .2s;}
+    .pub-title a:hover{color:var(--accent);}
+    .pub-authors{font-size:.8rem;color:var(--muted);line-height:1.6;margin-top:.4rem;}
+    .pub-authors strong{color:var(--text);font-weight:600;}
+    .pub-venue{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.04em;color:var(--muted);margin-top:.5rem;}
+    .pub-side{display:flex;flex-direction:column;align-items:flex-end;gap:.4rem;}
     .pub-year{font-family:'DM Mono',monospace;font-size:.78rem;color:var(--accent2);white-space:nowrap;}
  
     /* ── CONTACT ── */
@@ -563,11 +570,46 @@
     <p class="section-label" data-en="// research" data-de="// forschung">// research</p>
     <h2 data-en="Publications" data-de="Publikationen">Publications</h2>
     <div class="pub-list">
-      <div class="pub-item reveal"><p class="pub-title">Development of a semi-autonomous micro rover for lunar night survival</p><span class="pub-year">2024</span></div>
-      <div class="pub-item reveal"><p class="pub-title">Towards Sustainable Space Ecosystem: A State of the Art Survey on Standardizing Spacecraft Service Interfaces for Modular Orbital Systems</p><span class="pub-year">2025</span></div>
-      <div class="pub-item reveal"><p class="pub-title">Space USB: defining an enhanced standardization level for Space Standard Interconnects</p><span class="pub-year">2025</span></div>
-      <div class="pub-item reveal"><p class="pub-title">Prototyping and testing System Interconnect standard Interoperable for Orbital services</p><span class="pub-year">2025</span></div>
-      <div class="pub-item reveal"><p class="pub-title">Improving flexibility in modular space robots: An adapter to connect a research-related electromechanical interface with a commercial one</p><span class="pub-year">2025</span></div>
+      <div class="pub-item reveal">
+        <div class="pub-body">
+          <p class="pub-title"><a href="https://robotik.dfki-bremen.de/en/research/publications/15371" target="_blank" rel="noopener">Development of a semi-autonomous micro rover for lunar night survival</a></p>
+          <p class="pub-authors">Mehmed Yüksel, Wiebke Brinkmann, Hilmi Dogu Kücüker, Zhongqian Zhao, Leon Spies, Joel Gützlaff, Felix Glinka, Siddhant Shete, Andreas Bresser, Usman Imran, Jakob Wehnes, <strong>Utku Akinci</strong>, Markus Czupalla</p>
+          <p class="pub-venue">75th International Astronautical Congress (IAC 2024) · Milan</p>
+        </div>
+        <div class="pub-side"><span class="pub-year">2024</span><a class="text-link" href="https://doi.org/10.5281/zenodo.13991338" target="_blank" rel="noopener">DOI ↗</a></div>
+      </div>
+      <div class="pub-item reveal">
+        <div class="pub-body">
+          <p class="pub-title"><a href="https://robotik.dfki-bremen.de/en/research/publications/16187" target="_blank" rel="noopener">Towards Sustainable Space Ecosystem: A State of the Art Survey on Standardizing Spacecraft Service Interfaces for Modular Orbital Systems</a></p>
+          <p class="pub-authors">Mehmed Yüksel, Wiebke Brinkmann, <strong>Utku Akinci</strong>, Raphaël Boissonnade, Come Berger, Montserrat Diaz-Carrasco, Ana Luisa Ruiz-Perez, Thomas A. Schervan, Christopher Zeis, Pierre Letier, Mathieu Deremetz, Fabien Marty, Matisse Briand</p>
+          <p class="pub-venue">76th International Astronautical Congress (IAC 2025) · Sydney</p>
+        </div>
+        <div class="pub-side"><span class="pub-year">2025</span><a class="text-link" href="https://doi.org/10.5281/zenodo.17313985" target="_blank" rel="noopener">DOI ↗</a></div>
+      </div>
+      <div class="pub-item reveal">
+        <div class="pub-body">
+          <p class="pub-title"><a href="https://robotik.dfki-bremen.de/en/research/publications/16188" target="_blank" rel="noopener">Space USB: defining an enhanced standardization level for Space Standard Interconnects</a></p>
+          <p class="pub-authors">Montserrat Diaz-Carrasco, Ana Luisa Ruiz-Perez, Javier Viñals, Mathieu Deremetz, Pierre Letier, Christopher Zeis, Thomas A. Schervan, Wiebke Brinkmann, Mehmed Yüksel, <strong>Utku Akinci</strong>, Fabien Marty, Matisse Briand, Raphaël Boissonnade</p>
+          <p class="pub-venue">ASTRA 2025 · 18th Symposium on Advanced Space Technologies in Robotics and Automation · Leiden</p>
+        </div>
+        <div class="pub-side"><span class="pub-year">2025</span></div>
+      </div>
+      <div class="pub-item reveal">
+        <div class="pub-body">
+          <p class="pub-title"><a href="https://robotik.dfki-bremen.de/en/research/publications/17313" target="_blank" rel="noopener">Prototyping and Testing System Interconnect Standard Interoperable for Orbital Services</a></p>
+          <p class="pub-authors">Raphaël Boissonnade, Come Berger, Montserrat Diaz-Carrasco, Ana Luisa Ruiz-Perez, Mathieu Deremetz, Pierre Letier, Thomas A. Schervan, Christopher Zeis, Mehmed Yüksel, Wiebke Brinkmann, <strong>Utku Akinci</strong>, Fabien Marty, Matisse Briand</p>
+          <p class="pub-venue">Engineering Proceedings 133, 194 · MDPI</p>
+        </div>
+        <div class="pub-side"><span class="pub-year">2026</span><a class="text-link" href="https://doi.org/10.3390/engproc2026133194" target="_blank" rel="noopener">DOI ↗</a></div>
+      </div>
+      <div class="pub-item reveal">
+        <div class="pub-body">
+          <p class="pub-title"><a href="https://robotik.dfki-bremen.de/en/research/publications/17258" target="_blank" rel="noopener">Improving Flexibility in Modular Space Robots: An Adapter to Connect a Research-Related Electromechanical Interface with a Commercial One</a></p>
+          <p class="pub-authors">Jonas Benz, Hilmi Dogu Kücüker, Wiebke Brinkmann, Mehmed Yüksel, <strong>Utku Akinci</strong>, Jonas Eisenmenger</p>
+          <p class="pub-venue">Engineering Proceedings 133, 76 · MDPI</p>
+        </div>
+        <div class="pub-side"><span class="pub-year">2026</span><a class="text-link" href="https://doi.org/10.3390/engproc2026133076" target="_blank" rel="noopener">DOI ↗</a></div>
+      </div>
     </div>
   </div>
 </section>
