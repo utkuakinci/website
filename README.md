@@ -1,61 +1,82 @@
 # Personal Portfolio Site
- 
-A single-file, static personal portfolio website. HTML, CSS, and JavaScript all live inside `index.html` — no build system or dependencies required.
+
+Personal portfolio of Utku Akinci — a single-file, static website. HTML, CSS, and JavaScript all live inside `index.html`; there is no build system and no dependencies.
 
 [![utkuakinci.github.io](https://img.shields.io/badge/Go_To_Website-FF6600?style=for-the-badge)](https://utkuakinci.github.io/website/ "https://utkuakinci.github.io/website/")
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/akinciutku)
 
 ## 🌟 Features
- 
-- **Bilingual content (EN/DE)** — Language toggle buttons in the top-right switch between English and German. Text is swapped via JS using `data-en` / `data-de` attributes.
-- **Sections:** Hero, Key Achievements, About (Who I Am), Experience, Skills, Gallery, Education, Publications, Contact
-- **Scroll-reveal animations** — Elements with the `.reveal` class fade/animate in on scroll via `IntersectionObserver`.
-- **Gallery** — Preloaded photos from Unsplash plus user-addable slots.
-- **Photo placeholders** — Hero and About sections show placeholders when no real photo is set (the "upload" button is currently non-functional — see Future Improvements).
-- **Responsive design** — Mobile-friendly layout with a fixed nav bar, using Google Fonts (DM Serif Display, DM Sans, DM Mono).
-- **Contact links** — `mailto:` link and a LinkedIn link.
+
+- **Bilingual content (EN/DE)** — The toggle in the top-right switches between English and German without reloading the page.
+- **Sections** — Hero, Key Achievements, About, Experience, Skills, Gallery, Education, Publications, Contact.
+- **Scroll-reveal animations** — Elements with the `.reveal` class fade in on scroll via `IntersectionObserver`.
+- **Gallery** — Generated from a small array in the script, with a caption per language.
+- **Responsive design** — Fixed nav bar and a single-column layout below 860px.
+- **Link previews** — Meta description, Open Graph, and Twitter Card tags.
 
 ## 🛠️ Tech Stack
+
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-<!--![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)-->
-- Vanilla HTML5 / CSS3 (theming via CSS custom properties)
+
+- Vanilla HTML5 / CSS3 (theming via CSS custom properties in `:root`)
 - Vanilla JavaScript (no framework)
-- Google Fonts (CDN)
-- Unsplash (gallery images, via CDN)
+- Google Fonts via CDN (DM Serif Display, DM Sans, DM Mono)
+- Unsplash via CDN (placeholder gallery images)
 
 ## 🚀 Running
- 
-No build step required — just open the file in a browser:
- 
+
+No build step required — open `index.html` in a browser, or serve the folder locally:
+
 ```bash
-open index.html   # macOS
-# or with a local server:
-python3 -m http.server
+python -m http.server 8000
+# then visit http://localhost:8000
 ```
- 
-Can be deployed directly to any static hosting service such as GitHub Pages, Netlify, or Vercel.
- 
-## 🎯 Future Development Points
- 
-- [ ] **Real photo integration** — The Hero and About placeholders are still empty; the "upload" button exists visually but has no functional upload mechanism (needs localStorage or real file handling).
-- [ ] **Gallery images** — Currently using Unsplash stock photos; should be replaced with real project/DFKI/conference photos.
-- [ ] **Missing LinkedIn link** — `href="https://linkedin.com"` is a placeholder and should be updated with the actual profile URL.
-- [ ] **Content validation** — Dates and titles in Experience, Education, and Publications sections need to stay in sync with the current CV.
-- [ ] **SEO & meta tags** — Missing `<meta name="description">`, Open Graph, and Twitter Card tags, so link previews don't render when shared.
-- [ ] **Accessibility (a11y)** — Could add `alt` text for images, `aria-pressed` on language buttons, `aria-label` on nav, etc.
-- [ ] **Performance** — Review lazy-loading and font-display strategy for Google Fonts and Unsplash images; gallery images could be optimized and served locally.
-- [ ] **Contact form** — Replace `mailto:` with an embedded contact form (e.g. Formspree, Netlify Forms) for a smoother UX.
-- [ ] **Code organization** — As the project grows, CSS/JS could be split into separate files (`styles.css`, `main.js`); the single-file approach may have been chosen for simplicity but adds maintenance cost over time.
-- [ ] **Analytics** — Consider adding privacy-friendly analytics (e.g. Plausible, Umami) for visitor stats.
-- [ ] **Dark mode** — Since CSS custom properties are already in use, adding a `prefers-color-scheme` or manual theme toggle would be relatively easy.
-- [ ] **Cross-browser testing** — Manually test across different browsers and screen sizes, especially the nav and gallery grid on mobile.
+
+## ✏️ Editing Content
+
+**Text.** Every translatable element carries its text three times: in `data-en`, in `data-de`, and as the element's visible content. Keep the visible content identical to `data-en` — it is what visitors see before they touch the language toggle.
+
+```html
+<h2 data-en="Skills" data-de="Kenntnisse">Skills</h2>
+```
+
+Elements without these attributes (e.g. publication titles) stay the same in both languages.
+
+**Hero and About photos.** Put the image in `images/` and change the `src` of `#heroImg` or `#aboutImg`.
+
+**Gallery.** Add, remove, or reorder entries in the `preloadedPhotos` array near the bottom of `index.html`:
+
+```js
+{ src: 'images/lunisrover.jpeg', caption: { en: 'Lab work at DFKI', de: 'Laborarbeit am DFKI' } },
+```
+
+**Colors.** All colors are CSS custom properties at the top of the `<style>` block.
+
+## 🌐 Deployment
+
+The site is served by GitHub Pages at <https://utkuakinci.github.io/website/>; changes go live once they land on `main`. Because it is a plain static site, it can also be hosted as-is on Netlify, Vercel, or any other static host.
+
+If the URL changes, update the `og:url` and `og:image` meta tags in `index.html` — they must be absolute.
 
 ## 🏗️ File Structure
+
 ```
 .
-├── images/       # Project assets and images
+├── images/       # Photos used by the hero, about, and gallery sections
 ├── index.html    # All HTML, CSS, and JS live here
 └── README.md     # Project documentation
 ```
+
+## 🎯 Future Development Points
+
+- [ ] **Gallery images** — Two slots still use Unsplash stock photos; replace them with real project/DFKI/conference photos.
+- [ ] **Content validation** — Keep dates and titles in Experience, Education, and Publications in sync with the current CV.
+- [ ] **Accessibility (a11y)** — Add `aria-pressed` on the language buttons, `aria-label` on the nav, and check color contrast.
+- [ ] **Performance** — Compress the images in `images/` and review the font-loading strategy.
+- [ ] **Dark mode** — Colors are already CSS custom properties, so a `prefers-color-scheme` variant or a manual toggle is a small step.
+- [ ] **Contact form** — Replace `mailto:` with an embedded form (e.g. Formspree, Netlify Forms).
+- [ ] **Code organization** — Split CSS/JS into `styles.css` and `main.js` if the page keeps growing.
+- [ ] **Analytics** — Consider privacy-friendly analytics (e.g. Plausible, Umami).
+- [ ] **Cross-browser testing** — Check the nav and gallery grid on mobile browsers and small screens.

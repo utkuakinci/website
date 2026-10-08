@@ -4,6 +4,13 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Utku Akinci — Computer Scientist & Software Engineer</title>
+  <meta name="description" content="Utku Akinci — Computer Scientist &amp; Software Engineer in Bremen, Germany, specializing in autonomous systems, space robotics, and embedded software."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://utkuakinci.github.io/website/"/>
+  <meta property="og:title" content="Utku Akinci — Computer Scientist &amp; Software Engineer"/>
+  <meta property="og:description" content="Autonomous systems, space robotics, and embedded software development. Research Assistant at DFKI Space Robotics Team."/>
+  <meta property="og:image" content="https://utkuakinci.github.io/website/images/utku.jpeg"/>
+  <meta name="twitter:card" content="summary_large_image"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
@@ -56,11 +63,6 @@
     .btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
     .hero-right{position:relative;background:var(--bg2);display:flex;align-items:center;justify-content:center;overflow:hidden;}
     .hero-photo-wrap{width:100%;height:100%;display:flex;align-items:center;justify-content:center;}
-    .photo-placeholder{display:flex;flex-direction:column;align-items:center;gap:.8rem;color:var(--muted);text-align:center;padding:2rem;}
-    .photo-placeholder svg{opacity:.3;}
-    .photo-placeholder p{font-size:.82rem;font-family:'DM Mono',monospace;}
-    .photo-upload-btn{position:absolute;bottom:1.5rem;right:1.5rem;font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;padding:.5rem 1rem;background:var(--surface);border:1.5px solid var(--border);cursor:pointer;color:var(--accent);transition:border-color .2s;}
-    .photo-upload-btn:hover{border-color:var(--accent);}
  
     /* ── SECTIONS ── */
     section{border-top:1px solid var(--border);}
@@ -85,9 +87,6 @@
     .about-photo-frame::after{content:'';position:absolute;bottom:-10px;right:-10px;width:100%;height:100%;border:2px solid var(--accent);z-index:0;}
     .about-photo-inner{position:relative;z-index:1;width:100%;aspect-ratio:3/4;background:var(--bg2);overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;}
     .about-photo-inner img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;}
-    .slot-label{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--muted);text-align:center;padding:1rem;}
-    .slot-upload-btn{margin-top:.6rem;font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;padding:.4rem .9rem;background:transparent;border:1.5px solid var(--border);cursor:pointer;color:var(--accent);transition:border-color .2s;}
-    .slot-upload-btn:hover{border-color:var(--accent);}
  
     /* ── EXPERIENCE ── */
     .timeline{position:relative;padding-left:1.5rem;}
@@ -112,19 +111,15 @@
     /* ── GALLERY ── */
     .gallery-intro{font-size:.95rem;color:var(--muted);margin-bottom:2rem;max-width:540px;line-height:1.7;}
     .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.2rem;}
-    .gallery-slot{position:relative;aspect-ratio:4/3;background:var(--surface);border:1.5px dashed var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;cursor:pointer;transition:border-color .2s;}
+    .gallery-slot{position:relative;aspect-ratio:4/3;background:var(--surface);border:1.5px dashed var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;transition:border-color .2s;}
     .gallery-slot:hover{border-color:var(--accent);}
     .gallery-slot img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;}
     .slot-inner{display:flex;flex-direction:column;align-items:center;gap:.6rem;color:var(--muted);pointer-events:none;}
     .slot-inner svg{opacity:.4;}
     .slot-inner span{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;}
-    .slot-remove{position:absolute;top:.5rem;right:.5rem;background:rgba(255,255,255,.92);border:1px solid var(--border);font-size:.7rem;padding:.2rem .5rem;cursor:pointer;font-family:'DM Mono',monospace;color:var(--accent2);display:none;z-index:10;}
-    .gallery-slot:hover .slot-remove{display:block;}
     .slot-caption{position:absolute;bottom:0;left:0;right:0;background:rgba(255,255,255,.9);padding:.4rem .7rem;font-size:.78rem;color:var(--text);display:none;}
     .gallery-slot.has-img .slot-caption{display:block;}
     .cap-text{font-family:'DM Sans',sans-serif;font-size:.78rem;color:var(--text);}
-    .add-gallery-btn{margin-top:1.2rem;display:inline-flex;align-items:center;gap:.5rem;font-family:'DM Mono',monospace;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;padding:.6rem 1.4rem;background:transparent;border:1.5px solid var(--border);cursor:pointer;color:var(--accent);transition:border-color .2s;}
-    .add-gallery-btn:hover{border-color:var(--accent);}
  
     /* ── EDUCATION ── */
     .edu-list{display:flex;flex-direction:column;gap:1.1rem;}
@@ -150,11 +145,7 @@
     .contact-link:hover{border-color:var(--accent);color:var(--accent);}
  
     footer{border-top:1px solid var(--border);text-align:center;padding:2rem;font-family:'DM Mono',monospace;font-size:.72rem;color:var(--muted);}
- 
-    /* ── LANG TRANSITION ── */
-    .lang-fade{transition:opacity .25s;}
-    .lang-fade.hidden{opacity:0;pointer-events:none;position:absolute;}
- 
+
     @keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
     .reveal{opacity:0;transform:translateY(22px);transition:opacity .55s,transform .55s;}
     .reveal.visible{opacity:1;transform:none;}
@@ -209,10 +200,6 @@
   </div>
   <div class="hero-right">
     <div class="hero-photo-wrap" id="heroPhotoWrap">
-      <div class="photo-placeholder" id="heroPlaceholder" style="display:none;">
-        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        <p data-en="Hero / profile photo" data-de="Profilfoto">Hero / profile photo</p>
-      </div>
  
       <!--
       ╔══════════════════════════════════════════════════════════════╗
@@ -220,7 +207,6 @@
       ║  Kendi fotoğrafını eklemek için:                             ║
       ║  1. Fotoğraf dosyasını projeye ekle (örn. images/hero.jpg)   ║
       ║  2. Aşağıdaki src="..." kısmını kendi dosya yoluyla değiştir ║
-      ║  3. display:none  →  display:block  yap                      ║
       ║  Önerilen boyut: dikey/kare, en az 800×1000px                ║
       ╚══════════════════════════════════════════════════════════════╝
       -->
@@ -284,11 +270,6 @@
       </div>
       <div class="about-photo-frame reveal">
         <div class="about-photo-inner" id="aboutPhotoInner">
-          <div id="aboutPlaceholder" style="display:none;flex-direction:column;align-items:center;text-align:center;padding:1.5rem;">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".35"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <p class="slot-label" data-en="Portrait photo" data-de="Porträtfoto">Portrait photo</p>
-            <button class="slot-upload-btn" onclick="document.getElementById('aboutPhotoInput').click()" data-en="+ Upload" data-de="+ Hochladen">+ Upload</button>
-          </div>
  
           <!--
           ╔══════════════════════════════════════════════════════════════╗
@@ -302,6 +283,7 @@
           <img id="aboutImg"
                src="images/robot.jpeg"
                alt="Utku Akinci portrait"
+               loading="lazy"
                style="display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
  
         </div>
@@ -319,9 +301,9 @@
       <div class="tl-item reveal">
         <div class="tl-meta">
           <span class="tl-role" data-en="Research Assistant" data-de="Wissenschaftlicher Mitarbeiter">Research Assistant</span>
-          <span class="tl-date">Mar 2024 — Present</span>
+          <span class="tl-date" data-en="Mar 2024 — Present" data-de="März 2024 — heute">Mar 2024 — Present</span>
         </div>
-        <p class="tl-company">DFKI (Space Robotics Team) · Bremen, Germany</p>
+        <p class="tl-company" data-en="DFKI (Space Robotics Team) · Bremen, Germany" data-de="DFKI (Space Robotics Team) · Bremen, Deutschland">DFKI (Space Robotics Team) · Bremen, Germany</p>
         <ul class="tl-bullets">
           <li data-en="<strong>SpaceUSB:</strong> SOTA study on standard spacecraft interfaces — accepted for peer-reviewed journal." data-de="<strong>SpaceUSB:</strong> SOTA-Studie zu Raumfahrzeugschnittstellen — zur Veröffentlichung in einem Fachjournal angenommen."><strong>SpaceUSB:</strong> SOTA study on standard spacecraft interfaces — accepted for peer-reviewed journal.</li>
           <li data-en="EDA on standard interface data; technical visualization for project partners." data-de="EDA von Schnittstellendaten; technische Visualisierung für Projektpartner.">EDA on standard interface data; technical visualization for project partners.</li>
@@ -333,20 +315,20 @@
       <div class="tl-item reveal">
         <div class="tl-meta">
           <span class="tl-role" data-en="System Engineer" data-de="Systemingenieur">System Engineer</span>
-          <span class="tl-date">Sep 2021 — Sep 2022</span>
+          <span class="tl-date" data-en="Sep 2021 — Sep 2022" data-de="Sep. 2021 — Sep. 2022">Sep 2021 — Sep 2022</span>
         </div>
-        <p class="tl-company">SKYTECH · Istanbul, Turkey</p>
+        <p class="tl-company" data-en="SKYTECH · Istanbul, Turkey" data-de="SKYTECH · Istanbul, Türkei">SKYTECH · Istanbul, Turkey</p>
         <ul class="tl-bullets">
-          <li data-en="Evaluated and selected core technologies, hardware architectures, and critical components to ensure seamless system interoperability and modular scalability." data-de="Bewertete und wählte Kerntechnologien, Hardwarearchitekturen sowie kritische Komponenten aus, um eine nahtlose Systeminteroperabilität und modulare Skalierbarkeit zu gewährleisten.">Developed a comprehensive business plan integrating marketing, production, and financial analysis.</li>
-          <li data-en="Led the engineering design of alternative modular systems, managing the technical transition from conceptual design to functional, production-ready prototypes." data-de="Führte das Engineering-Design alternativer modularer Systeme und steuerte den technischen Übergang vom Konzeptdesign zu funktionsfähigen, serienreifen Prototypen.">DirectedEntwicklung eines umfassenden Geschäftsplans mit Marketing-, Produktions- und Finanzanalyse.">Developed a comprehensive business plan integrating marketing, production, and financial analysis. prototype development from component selection through modular system design.</li>
+          <li data-en="Evaluated and selected core technologies, hardware architectures, and critical components to ensure seamless system interoperability and modular scalability." data-de="Bewertete und wählte Kerntechnologien, Hardwarearchitekturen sowie kritische Komponenten aus, um eine nahtlose Systeminteroperabilität und modulare Skalierbarkeit zu gewährleisten.">Evaluated and selected core technologies, hardware architectures, and critical components to ensure seamless system interoperability and modular scalability.</li>
+          <li data-en="Led the engineering design of alternative modular systems, managing the technical transition from conceptual design to functional, production-ready prototypes." data-de="Führte das Engineering-Design alternativer modularer Systeme und steuerte den technischen Übergang vom Konzeptdesign zu funktionsfähigen, serienreifen Prototypen.">Led the engineering design of alternative modular systems, managing the technical transition from conceptual design to functional, production-ready prototypes.</li>
         </ul>
       </div>
       <div class="tl-item reveal">
         <div class="tl-meta">
           <span class="tl-role" data-en="R&amp;D Engineer Intern" data-de="F&amp;E-Ingenieur (Praktikum)">R&amp;D Engineer Intern</span>
-          <span class="tl-date">Feb 2020 — Jun 2020</span>
+          <span class="tl-date" data-en="Feb 2020 — Jun 2020" data-de="Feb. 2020 — Jun. 2020">Feb 2020 — Jun 2020</span>
         </div>
-        <p class="tl-company">Inovatink · Istanbul, Turkey</p>
+        <p class="tl-company" data-en="Inovatink · Istanbul, Turkey" data-de="Inovatink · Istanbul, Türkei">Inovatink · Istanbul, Turkey</p>
         <ul class="tl-bullets">
           <li data-en="Engineered an air pollution predictive model using Python data analytics and QGIS." data-de="Entwicklung eines Vorhersagemodells zur Luftverschmutzung mit Python und QGIS.">Engineered an air pollution predictive model using Python data analytics and QGIS.</li>
           <li data-en="Utilized Land Use Regression models to map urban pollutant concentration levels." data-de="Verwendung von Land-Use-Regression-Modellen zur Kartierung urbaner Schadstoffkonzentrationen.">Utilized Land Use Regression models to map urban pollutant concentration levels.</li>
@@ -415,7 +397,7 @@
   <div class="section-inner">
     <p class="section-label" data-en="// moments &amp; projects" data-de="// momente &amp; projekte">// moments &amp; projects</p>
     <h2 data-en="Gallery" data-de="Galerie">Gallery</h2>
-    <p class="gallery-intro" data-en="Photos from the lab, conferences, and field work. Click a slot to upload an image, then add a caption." data-de="Fotos aus dem Labor, von Konferenzen und Feldarbeiten. Slot anklicken zum Hochladen, dann Bildunterschrift hinzufügen.">Photos from the lab, conferences, and field work. Click a slot to upload an image, then add a caption.</p>
+    <p class="gallery-intro" data-en="Photos from the lab, conferences, and field work." data-de="Fotos aus dem Labor, von Konferenzen und Feldarbeiten.">Photos from the lab, conferences, and field work.</p>
     <div class="gallery-grid" id="galleryGrid"></div>
   </div>
 </section>
@@ -429,21 +411,21 @@
       <div class="edu-item reveal">
         <div>
           <p class="edu-degree" data-en="MSc Computer Science &amp; Software Engineering" data-de="MSc Informatik &amp; Software-Engineering">MSc Computer Science &amp; Software Engineering</p>
-          <p class="edu-school">Constructor University · Bremen, Germany</p>
+          <p class="edu-school" data-en="Constructor University · Bremen, Germany" data-de="Constructor University · Bremen, Deutschland">Constructor University · Bremen, Germany</p>
         </div>
         <span class="edu-date" data-en="Aug 2023 — Aug 2025" data-de="Aug. 2023 — Aug. 2025">Aug 2023 — Aug 2025</span>
       </div>
       <div class="edu-item reveal">
         <div>
           <p class="edu-degree" data-en="BSc Mechatronics Engineering" data-de="BSc Mechatronik-Ingenieurwesen">BSc Mechatronics Engineering</p>
-          <p class="edu-school">Bahçeşehir University · Istanbul, Turkey</p>
+          <p class="edu-school" data-en="Bahçeşehir University · Istanbul, Turkey" data-de="Bahçeşehir-Universität · Istanbul, Türkei">Bahçeşehir University · Istanbul, Turkey</p>
         </div>
         <span class="edu-date" data-en="Oct 2016 — Jun 2021" data-de="Okt. 2016 — Jun. 2021">Oct 2016 — Jun 2021</span>
       </div>
       <div class="edu-item reveal">
         <div>
           <p class="edu-degree" data-en="ESL Preparatory Program" data-de="ESL-Vorbereitungsprogramm">ESL Preparatory Program</p>
-          <p class="edu-school">Mentora College · Washington D.C., United States</p>
+          <p class="edu-school" data-en="Mentora College · Washington D.C., United States" data-de="Mentora College · Washington D.C., USA">Mentora College · Washington D.C., United States</p>
         </div>
         <span class="edu-date" data-en="Oct 2016 — May 2017" data-de="Okt. 2016 — Mai 2017">Oct 2016 — May 2017</span>
       </div>
@@ -474,13 +456,13 @@
     <p class="contact-lead" data-en="Open to research collaborations, full-time roles, and interesting conversations." data-de="Offen für Forschungskooperationen, Festanstellungen und interessante Gespräche.">Open to research collaborations, full-time roles, and interesting conversations.</p>
     <div class="contact-row">
       <a href="mailto:utku_akinci@hotmail.com" class="contact-link">✉ utku_akinci@hotmail.com</a>
-      <a href="https://linkedin.com" target="_blank" class="contact-link">◈ LinkedIn</a>
+      <a href="https://linkedin.com/in/akinciutku" target="_blank" rel="noopener" class="contact-link">◈ LinkedIn</a>
       <a href="tel:+4917630189678" class="contact-link">☎ +49 176 301 896 78</a>
     </div>
   </div>
 </section>
  
-<footer>© 2026 Utku Akinci · Bremen, Germany</footer>
+<footer data-en="© 2026 Utku Akinci · Bremen, Germany" data-de="© 2026 Utku Akinci · Bremen, Deutschland">© 2026 Utku Akinci · Bremen, Germany</footer>
  
 <script>
   /* ── SCROLL REVEAL ── */
@@ -501,41 +483,42 @@
   ║  GALLERY PHOTOS — Galeri fotoğrafları                                ║
   ║  Her slot için:                                                      ║
   ║    src  → kendi fotoğraf yolunla değiştir (örn. "images/lab1.jpg")   ║
-  ║    caption → fotoğrafın altında görünecek açıklama metni             ║
+  ║    caption → fotoğrafın altında görünecek açıklama ({ en, de })      ║
   ║  Slot sayısını artırmak için yeni { src, caption } satırı ekle.      ║
   ║  Bir slotu tamamen kaldırmak istersen o satırı sil.                  ║
   ╚══════════════════════════════════════════════════════════════════════╝
   */
   const preloadedPhotos = [
     /*{ src: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=80', caption: 'Lab work at DFKI'              },*/
-    { src: 'images/lunisrover.jpeg', caption: 'Lab work at DFKI'              },
-    { src: 'images/coyote.jpeg', caption: 'Robotics research'             },
-    { src: 'https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?w=600&q=80', caption: 'Conference presentation'       },
-    { src: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80', caption: 'Embedded systems development'  },
+    { src: 'images/lunisrover.jpeg', caption: { en: 'Lab work at DFKI',             de: 'Laborarbeit am DFKI'               } },
+    { src: 'images/coyote.jpeg',     caption: { en: 'Robotics research',            de: 'Robotikforschung'                  } },
+    { src: 'https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?w=600&q=80', caption: { en: 'Conference presentation',      de: 'Konferenzvortrag'                  } },
+    { src: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80', caption: { en: 'Embedded systems development', de: 'Entwicklung eingebetteter Systeme' } },
   ];
  
-  function addGallerySlot(preImg, preCaption) {
+  function addGallerySlot(preImg, caption) {
+    const cap=caption||{en:'',de:''};
+    const preCaption=cap[currentLang]||cap.en;
     sc++;
     const id='gs'+sc;
     const slot=document.createElement('div');
     slot.className='gallery-slot'; slot.id=id;
-    slot.style.cursor='default';
     slot.innerHTML=
       '<div class="slot-inner">'+
         '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>'+
         '<span>Photo</span>'+
       '</div>'+
-      '<div class="slot-caption"><span class="cap-text">'+(preCaption||'')+'</span></div>';
+      '<div class="slot-caption"><span class="cap-text" data-en="'+cap.en+'" data-de="'+cap.de+'">'+preCaption+'</span></div>';
     grid.appendChild(slot);
     if (preImg) {
       const img=document.createElement('img');
+      img.loading='lazy';
       img.src=preImg; img.alt=preCaption||'Gallery photo';
       slot.prepend(img);
       slot.querySelector('.slot-inner').style.display='none';
       slot.classList.add('has-img');
     }
   }
-  function removeSlot(id,e){e.stopPropagation();const el=document.getElementById(id);if(el)el.remove();}
   preloadedPhotos.forEach(p=>addGallerySlot(p.src, p.caption));
  
   /* ── LANGUAGE SWITCHER ── */
