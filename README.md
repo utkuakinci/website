@@ -84,12 +84,24 @@ If the URL changes, update the `og:url` and `og:image` meta tags in `index.html`
 
 ## 🎯 Future Development Points
 
+### Needs input first
+
+These are blocked on a file, a decision, or a review rather than on code.
+
+- [ ] **CV download** — No CV file exists in the repo yet (`images/utku_cv.jpeg` is a portrait). Add the CV as a PDF, then link it from the hero and contact sections.
+- [ ] **Custom domain** — Buy a domain, point it at GitHub Pages, then add a `CNAME` file and update the `og:url` and `og:image` tags.
+- [ ] **Publication years** — "Prototyping and Testing System Interconnect Standard…" and "Improving Flexibility in Modular Space Robots…" are listed as 2026, following their DFKI records (Engineering Proceedings 133). Confirm, or change back to 2025.
+- [ ] **Project card texts** — The descriptions in the Projects section were derived from the Experience bullets. Check them, in particular that the ARM Cortex-M7 unit test environment belongs to SAMLER-KI.
+- [ ] **German translations** — Have the German texts proofread, especially the newer ones (project cards, dates, gallery captions).
+- [ ] **Repository descriptions** — Several repositories shown under "Latest on GitHub" have no description on GitHub (e.g. FaceDetection, lawnmower, Computer-Vision-Projects). Adding one there updates the site automatically.
+- [ ] **Contribution graph** — Left out because commits are authored as `uakinci` while the repositories belong to `utkuakinci`. Link the commit email to the GitHub account first, otherwise the graph may come out empty.
+
+### Improvements
+
 - [ ] **Gallery images** — Two slots still use Unsplash stock photos; replace them with real project/DFKI/conference photos.
 - [ ] **Content validation** — Keep dates and titles in Experience, Education, and Publications in sync with the current CV.
 - [ ] **Accessibility (a11y)** — Add `aria-pressed` on the language buttons, `aria-label` on the nav, and check color contrast.
 - [ ] **Performance** — Compress the images in `images/` and review the font-loading strategy.
-- [ ] **CV download** — Add the CV as a PDF and link it from the hero and contact sections.
-- [ ] **Custom domain** — Point a domain at GitHub Pages, then update the `og:url` and `og:image` tags.
 - [ ] **Contact form** — Replace `mailto:` with an embedded form (e.g. Formspree, Netlify Forms).
 - [ ] **Code organization** — Split CSS/JS into `styles.css` and `main.js` if the page keeps growing.
 - [ ] **Analytics** — Consider privacy-friendly analytics (e.g. Plausible, Umami).
