@@ -161,6 +161,16 @@ contactForm.addEventListener('submit', e => {
     .finally(()=>{ button.disabled=false; });
 });
 
+/* ── ANALYTICS ── */
+/* GoatCounter: cookie-less visit counts. Stays off until a site code is set here. */
+const GOATCOUNTER_CODE='';
+if (GOATCOUNTER_CODE && location.protocol!=='file:' && location.hostname!=='localhost') {
+  const gc=document.createElement('script');
+  gc.async=true; gc.src='https://gc.zgo.at/count.js';
+  gc.dataset.goatcounter='https://'+GOATCOUNTER_CODE+'.goatcounter.com/count';
+  document.head.appendChild(gc);
+}
+
 /* ── THEME TOGGLE ── */
 function toggleTheme() {
   const next = document.documentElement.getAttribute('data-theme')==='dark' ? 'light' : 'dark';
