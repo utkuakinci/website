@@ -13,8 +13,8 @@
   <meta property="og:image" content="https://utkuakinci.github.io/website/images/utku.jpeg"/>
   <meta name="twitter:card" content="summary_large_image"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css">
   <script>
     /* Set the theme before first paint: saved choice, else the OS preference */
     (function(){
@@ -26,7 +26,7 @@
   <style>
     :root{
       --bg:#f5f3ef;--bg2:#edeae3;--surface:#fff;--border:#ddd9d0;
-      --text:#1a1814;--muted:#7a746a;--accent:#2563a8;--accent2:#c8501a;
+      --text:#1a1814;--muted:#6c665d;--accent:#2563a8;--accent2:#b04414;
       --accent-lt:#dbeafe;--tag-bg:#f0ede6;
       --accent-hover:#1a4f8a;--on-accent:#fff;
       --nav-bg:rgba(245,243,239,.94);--caption-bg:rgba(255,255,255,.9);
@@ -42,6 +42,7 @@
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{scroll-behavior:smooth;}
+    :focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
     body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.6;transition:background .25s,color .25s;}
  
     /* ── LANG SWITCHER ── */
@@ -173,7 +174,29 @@
     .skill-group h3{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent2);margin-bottom:1rem;padding-bottom:.4rem;border-bottom:1.5px solid var(--border);}
     .skill-tags{display:flex;flex-wrap:wrap;gap:.5rem;}
     .skill-tag{display:inline-flex;align-items:center;gap:.45rem;font-family:'DM Mono',monospace;font-size:.75rem;letter-spacing:.04em;padding:.35rem .85rem;background:var(--tag-bg);border:1.5px solid var(--border);color:var(--text);transition:border-color .2s,color .2s,background .2s;}
-    .skill-tag i{font-size:1rem;}
+    /* Icons are single SVGs used as masks, so they take the text color in both themes */
+    .ic{width:1rem;height:1rem;flex:none;background:currentColor;-webkit-mask:var(--icon) center/contain no-repeat;mask:var(--icon) center/contain no-repeat;}
+    .ic-c{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/c/c-plain.svg");}
+    .ic-cplusplus{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/cplusplus/cplusplus-plain.svg");}
+    .ic-python{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/python/python-plain.svg");}
+    .ic-html5{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/html5/html5-plain.svg");}
+    .ic-css3{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/css3/css3-plain.svg");}
+    .ic-bash{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/bash/bash-plain.svg");}
+    .ic-pytorch{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/pytorch/pytorch-original.svg");}
+    .ic-tensorflow{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/tensorflow/tensorflow-original.svg");}
+    .ic-pandas{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/pandas/pandas-plain.svg");}
+    .ic-numpy{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/numpy/numpy-plain.svg");}
+    .ic-matplotlib{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/matplotlib/matplotlib-plain.svg");}
+    .ic-raspberrypi{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/raspberrypi/raspberrypi-plain.svg");}
+    .ic-gitlab{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/gitlab/gitlab-plain.svg");}
+    .ic-github{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/github/github-original.svg");}
+    .ic-linux{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/linux/linux-plain.svg");}
+    .ic-cmake{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/cmake/cmake-plain.svg");}
+    .ic-docker{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/docker/docker-plain.svg");}
+    .ic-ros{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/ros/ros-original.svg");}
+    .ic-qt{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/qt/qt-original.svg");}
+    .ic-figma{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/figma/figma-plain.svg");}
+    .ic-latex{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/latex/latex-original.svg");}
     .skill-tag:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-lt);}
  
     /* ── GALLERY ── */
@@ -241,7 +264,7 @@
 <body>
  
 <!-- NAV -->
-<nav>
+<nav aria-label="Main">
   <span class="nav-logo">Utku Akinci</span>
   <div class="nav-right">
     <ul class="nav-links" id="navLinks">
@@ -253,16 +276,16 @@
       <li><a href="#publications" data-en="Papers" data-de="Publikationen">Papers</a></li>
       <li><a href="#contact" data-en="Contact" data-de="Kontakt">Contact</a></li>
     </ul>
-    <div class="lang-switcher">
-      <button class="lang-btn active" id="btnEN" onclick="setLang('en')">EN</button>
-      <button class="lang-btn" id="btnDE" onclick="setLang('de')">DE</button>
+    <div class="lang-switcher" role="group" aria-label="Language">
+      <button class="lang-btn active" id="btnEN" aria-pressed="true" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" id="btnDE" aria-pressed="false" onclick="setLang('de')">DE</button>
     </div>
     <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle dark mode">
-      <svg class="i-moon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-      <svg class="i-sun" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <svg class="i-moon" aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="i-sun" aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
     </button>
     <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
     </button>
   </div>
 </nav>
@@ -303,6 +326,7 @@
       <img id="heroImg"
            src="images/utku.jpeg"
            alt="Utku Akinci"
+           fetchpriority="high"
            style="display:block;width:100%;height:100%;object-fit:cover;"/>
  
     </div>
@@ -316,17 +340,17 @@
     <h2 data-en="Key Achievements" data-de="Wichtigste Erfolge">Key Achievements</h2>
     <div class="achievements-grid">
       <div class="ach-card reveal">
-        <div class="ach-icon">🛰️</div>
+        <div class="ach-icon" aria-hidden="true">🛰️</div>
         <h3 data-en="Space Systems &amp; Standardization" data-de="Raumsysteme &amp; Standardisierung">Space Systems &amp; Standardization</h3>
         <p data-en="SOTA research on standard interfaces for spacecraft. Co-authored publications at IAC 2025 and ASTRA 2025." data-de="SOTA-Forschung zu Standardschnittstellen für Raumfahrzeuge. Mitautor von Publikationen auf dem IAC 2025 und ASTRA 2025.">SOTA research on standard interfaces for spacecraft. Co-authored publications at IAC 2025 and ASTRA 2025.</p>
       </div>
       <div class="ach-card reveal">
-        <div class="ach-icon">⚙️</div>
+        <div class="ach-icon" aria-hidden="true">⚙️</div>
         <h3 data-en="Embedded Systems &amp; Testing" data-de="Eingebettete Systeme &amp; Testing">Embedded Systems &amp; Testing</h3>
         <p data-en="Designed unit test environments for ARM Cortex-M7 and integration testing setups with Raspberry Pi &amp; CANbus." data-de="Entwicklung von Unit-Test-Umgebungen für ARM Cortex-M7 und Integrationstests mit Raspberry Pi &amp; CANbus.">Designed unit test environments for ARM Cortex-M7 and integration testing setups with Raspberry Pi &amp; CANbus.</p>
       </div>
       <div class="ach-card reveal">
-        <div class="ach-icon">🌕</div>
+        <div class="ach-icon" aria-hidden="true">🌕</div>
         <h3 data-en="Autonomous Navigation" data-de="Autonome Navigation">Autonomous Navigation</h3>
         <p data-en="Built spatial forecast models with Python &amp; QGIS. Curated lunar datasets for micro-rover navigation systems." data-de="Räumliche Prognosemodelle mit Python &amp; QGIS entwickelt. Lunar-Datensätze für Mikro-Rover-Navigationssysteme kuratiert.">Built spatial forecast models with Python &amp; QGIS. Curated lunar datasets for micro-rover navigation systems.</p>
       </div>
@@ -495,19 +519,19 @@
       <div class="skill-group reveal">
         <h3 data-en="Programming Languages" data-de="Programmiersprachen">Programming Languages</h3>
         <div class="skill-tags">
-          <span class="skill-tag"><i class="devicon-c-plain"></i>C</span><span class="skill-tag"><i class="devicon-cplusplus-plain"></i>C++</span><span class="skill-tag"><i class="devicon-python-plain"></i>Python</span><span class="skill-tag"><i class="devicon-html5-plain"></i>HTML</span><span class="skill-tag"><i class="devicon-css3-plain"></i>CSS</span><span class="skill-tag"><i class="devicon-bash-plain"></i>Bash</span>
+          <span class="skill-tag"><i class="ic ic-c" aria-hidden="true"></i>C</span><span class="skill-tag"><i class="ic ic-cplusplus" aria-hidden="true"></i>C++</span><span class="skill-tag"><i class="ic ic-python" aria-hidden="true"></i>Python</span><span class="skill-tag"><i class="ic ic-html5" aria-hidden="true"></i>HTML</span><span class="skill-tag"><i class="ic ic-css3" aria-hidden="true"></i>CSS</span><span class="skill-tag"><i class="ic ic-bash" aria-hidden="true"></i>Bash</span>
         </div>
       </div>
       <div class="skill-group reveal">
         <h3 data-en="AI / Machine Learning" data-de="KI / Maschinelles Lernen">AI / Machine Learning</h3>
         <div class="skill-tags">
-          <span class="skill-tag"><i class="devicon-pytorch-original"></i>PyTorch</span><span class="skill-tag"><i class="devicon-tensorflow-original"></i>TensorFlow</span><span class="skill-tag">RAY</span><span class="skill-tag">CUDA</span><span class="skill-tag"><i class="devicon-pandas-plain"></i>Pandas</span><span class="skill-tag"><i class="devicon-numpy-plain"></i>NumPy</span><span class="skill-tag"><i class="devicon-matplotlib-plain"></i>Matplotlib</span>
+          <span class="skill-tag"><i class="ic ic-pytorch" aria-hidden="true"></i>PyTorch</span><span class="skill-tag"><i class="ic ic-tensorflow" aria-hidden="true"></i>TensorFlow</span><span class="skill-tag">RAY</span><span class="skill-tag">CUDA</span><span class="skill-tag"><i class="ic ic-pandas" aria-hidden="true"></i>Pandas</span><span class="skill-tag"><i class="ic ic-numpy" aria-hidden="true"></i>NumPy</span><span class="skill-tag"><i class="ic ic-matplotlib" aria-hidden="true"></i>Matplotlib</span>
         </div>
       </div>
       <div class="skill-group reveal">
         <h3 data-en="Embedded Systems &amp; Hardware" data-de="Eingebettete Systeme &amp; Hardware">Embedded Systems &amp; Hardware</h3>
         <div class="skill-tags">
-          <span class="skill-tag">ARM Cortex-M7</span><span class="skill-tag">ARM Cortex-A53</span><span class="skill-tag">Cortex-A72</span><span class="skill-tag">CANbus</span><span class="skill-tag"><i class="devicon-raspberrypi-plain"></i>Raspberry Pi</span>
+          <span class="skill-tag">ARM Cortex-M7</span><span class="skill-tag">ARM Cortex-A53</span><span class="skill-tag">Cortex-A72</span><span class="skill-tag">CANbus</span><span class="skill-tag"><i class="ic ic-raspberrypi" aria-hidden="true"></i>Raspberry Pi</span>
         </div>
       </div>
       <div class="skill-group reveal">
@@ -519,13 +543,13 @@
       <div class="skill-group reveal">
         <h3 data-en="DevOps &amp; Tooling" data-de="DevOps &amp; Werkzeuge">DevOps &amp; Tooling</h3>
         <div class="skill-tags">
-          <span class="skill-tag"><i class="devicon-gitlab-plain"></i>GitLab</span><span class="skill-tag"><i class="devicon-github-original"></i>GitHub</span><span class="skill-tag">CI/CD</span><span class="skill-tag"><i class="devicon-linux-plain"></i>Linux</span><span class="skill-tag"><i class="devicon-cmake-plain"></i>CMake</span><span class="skill-tag">Make</span><span class="skill-tag"><i class="devicon-docker-plain"></i>Docker</span><span class="skill-tag"><i class="devicon-ros-original"></i>ROS</span>
+          <span class="skill-tag"><i class="ic ic-gitlab" aria-hidden="true"></i>GitLab</span><span class="skill-tag"><i class="ic ic-github" aria-hidden="true"></i>GitHub</span><span class="skill-tag">CI/CD</span><span class="skill-tag"><i class="ic ic-linux" aria-hidden="true"></i>Linux</span><span class="skill-tag"><i class="ic ic-cmake" aria-hidden="true"></i>CMake</span><span class="skill-tag">Make</span><span class="skill-tag"><i class="ic ic-docker" aria-hidden="true"></i>Docker</span><span class="skill-tag"><i class="ic ic-ros" aria-hidden="true"></i>ROS</span>
         </div>
       </div>
       <div class="skill-group reveal">
         <h3 data-en="GUI &amp; Design Tools" data-de="GUI &amp; Design-Werkzeuge">GUI &amp; Design Tools</h3>
         <div class="skill-tags">
-          <span class="skill-tag"><i class="devicon-qt-original"></i>PyQt5</span><span class="skill-tag">Tkinter</span><span class="skill-tag"><i class="devicon-figma-plain"></i>Figma</span><span class="skill-tag">QGIS</span><span class="skill-tag"><i class="devicon-latex-original"></i>LaTeX</span><span class="skill-tag">Microsoft Office</span>
+          <span class="skill-tag"><i class="ic ic-qt" aria-hidden="true"></i>PyQt5</span><span class="skill-tag">Tkinter</span><span class="skill-tag"><i class="ic ic-figma" aria-hidden="true"></i>Figma</span><span class="skill-tag">QGIS</span><span class="skill-tag"><i class="ic ic-latex" aria-hidden="true"></i>LaTeX</span><span class="skill-tag">Microsoft Office</span>
         </div>
       </div>
       <div class="skill-group reveal">
@@ -798,6 +822,8 @@
     currentLang = lang;
     document.getElementById('btnEN').classList.toggle('active', lang==='en');
     document.getElementById('btnDE').classList.toggle('active', lang==='de');
+    document.getElementById('btnEN').setAttribute('aria-pressed', lang==='en');
+    document.getElementById('btnDE').setAttribute('aria-pressed', lang==='de');
     document.documentElement.lang = lang;
  
     // Update all elements that have data-en / data-de
@@ -812,6 +838,11 @@
       }
     });
  
+    // Keep gallery alt text in step with the visible caption
+    document.querySelectorAll(".gallery-slot.has-img").forEach(slot => {
+      slot.querySelector("img").alt = slot.querySelector(".cap-text").textContent;
+    });
+
     // Update page title
     document.title = lang === 'de'
       ? 'Utku Akinci — Informatiker & Software-Ingenieur'
