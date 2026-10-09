@@ -133,33 +133,16 @@ const navObs = new IntersectionObserver(entries => {
 document.querySelectorAll('#hero,section').forEach(sec=>navObs.observe(sec));
 
 /* ── CONTACT FORM ── */
-/* Sent in the background through FormSubmit; without JavaScript the form posts normally. */
-const formText = {
-  en: { sending: 'Sending…', ok: 'Thanks — your message has been sent.', error: 'Could not send the message. Please email me directly instead.' },
-  de: { sending: 'Wird gesendet…', ok: 'Danke — Ihre Nachricht wurde gesendet.', error: 'Die Nachricht konnte nicht gesendet werden. Bitte schreiben Sie mir direkt per E-Mail.' },
-};
+/* The form posts to FormSubmit, which shows its captcha and then sends the visitor back here with ?sent=1. */
 const contactForm=document.getElementById('contactForm');
-contactForm.addEventListener('submit', e => {
-  e.preventDefault();
-  const data=Object.fromEntries(new FormData(contactForm));
-  if (data._honey) return;
+if (location.protocol!=='file:') contactForm.elements._next.value=location.origin+location.pathname+'?sent=1#contact';
+if (new URLSearchParams(location.search).has('sent')) {
   const status=document.getElementById('formStatus');
-  const button=contactForm.querySelector('button');
-  const say=state=>{ status.textContent=formText[currentLang][state]; status.className='form-status '+state; };
-  button.disabled=true; say('sending');
-  fetch(contactForm.action.replace('formsubmit.co/','formsubmit.co/ajax/'), {
-    method:'POST',
-    headers:{'Content-Type':'application/json','Accept':'application/json'},
-    body:JSON.stringify(data),
-  })
-    .then(res=>res.json())
-    .then(result=>{
-      if (String(result.success)!=='true') throw new Error(result.message);
-      contactForm.reset(); say('ok');
-    })
-    .catch(()=>say('error'))
-    .finally(()=>{ button.disabled=false; });
-});
+  status.dataset.en='Thanks — your message has been sent.';
+  status.dataset.de='Danke — Ihre Nachricht wurde gesendet.';
+  status.textContent=status.dataset[currentLang];
+  history.replaceState(null,'',location.pathname+'#contact');
+}
 
 /* ── ANALYTICS ── */
 /* GoatCounter: cookie-less visit counts. Stays off until a site code is set here. */

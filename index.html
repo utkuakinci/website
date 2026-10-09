@@ -425,10 +425,11 @@
     <p class="section-label" data-en="// get in touch" data-de="// kontakt">// get in touch</p>
     <h2 data-en="Let's Connect" data-de="Kontakt aufnehmen">Let's Connect</h2>
     <p class="contact-lead" data-en="Open to research collaborations, full-time roles, and interesting conversations." data-de="Offen für Forschungskooperationen, Festanstellungen und interessante Gespräche.">Open to research collaborations, full-time roles, and interesting conversations.</p>
-    <!-- Messages are delivered by FormSubmit (formsubmit.co) to the address in the action URL -->
+    <!-- Posts to FormSubmit (formsubmit.co): it shows a captcha, emails the message to the address in the action URL, then returns to _next -->
     <form class="contact-form reveal" id="contactForm" action="https://formsubmit.co/utku_akinci@hotmail.com" method="POST">
       <input type="text" name="_honey" class="form-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
       <input type="hidden" name="_subject" value="New message from utkuakinci.github.io">
+      <input type="hidden" name="_next" value="https://utkuakinci.github.io/website/?sent=1#contact">
       <div class="form-pair">
         <div class="form-field">
           <label for="cfName" data-en="Name" data-de="Name">Name</label>

@@ -15,7 +15,7 @@ Personal portfolio of Utku Akinci — a static website made of three hand-writte
 - **Publications** — Each entry lists authors, venue, and a link to the record or DOI.
 - **Scroll-reveal animations** — Elements with the `.reveal` class fade in on scroll via `IntersectionObserver`.
 - **Gallery** — Generated from a small array in `main.js`, with a caption per language.
-- **Contact form** — Messages are sent in the background through FormSubmit and arrive by email; direct links stay below it.
+- **Contact form** — Messages go through FormSubmit, which checks a captcha and forwards them by email; direct links stay below it.
 - **Responsive design** — Fixed nav bar that highlights the current section and collapses into a menu below 1100px; single-column layout below 860px.
 - **Link previews** — Meta description, Open Graph, and Twitter Card tags.
 
@@ -31,7 +31,7 @@ Personal portfolio of Utku Akinci — a static website made of three hand-writte
 - Devicon SVGs via CDN (technology icons in the Skills section, loaded one file per icon)
 - GitHub REST API (public repository list, no token needed)
 - Unsplash via CDN (placeholder gallery images)
-- FormSubmit (contact form delivery, free, no account)
+- FormSubmit (contact form delivery with captcha, free, no account)
 - GoatCounter (optional visit counts, off by default)
 
 ## 🚀 Running
@@ -67,7 +67,7 @@ Elements without these attributes (e.g. publication titles) stay the same in bot
 
 **Skill icons.** A tag gets an icon from an `<i class="ic ic-…">` element inside it. Each `.ic-…` class in `styles.css` points at one SVG from <https://devicon.dev>; add a class there to add an icon. Tags without a matching icon stay text-only.
 
-**Contact form.** The form posts to FormSubmit, which forwards each message to the email address in the form's `action` URL in `index.html`. The first message ever sent triggers a confirmation email to that address; messages are delivered only after the link in it is clicked. Changing the address means confirming again.
+**Contact form.** The form posts to FormSubmit, which shows its captcha page, sends the visitor back to the site, and forwards each message to the email address in the form's `action` URL in `index.html`. The first message ever sent triggers a confirmation email to that address; messages are delivered only after the link in it is clicked. Changing the address means confirming again.
 
 **Analytics.** Visit counting is off. To turn it on, create a free site at <https://www.goatcounter.com> and put its code (the `mysite` part of `mysite.goatcounter.com`) into `GOATCOUNTER_CODE` in `main.js`. GoatCounter sets no cookies, so no consent banner is needed.
 

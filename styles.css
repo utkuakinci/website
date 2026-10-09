@@ -222,10 +222,7 @@ h2{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);let
 .form-field input:focus,.form-field textarea:focus{outline:none;border-color:var(--accent);}
 .form-actions{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;}
 .contact-form .btn-primary{border:none;cursor:pointer;}
-.contact-form .btn-primary:disabled{opacity:.6;cursor:default;transform:none;}
-.form-status{font-size:.85rem;color:var(--muted);}
-.form-status.ok{color:var(--accent);}
-.form-status.error{color:var(--accent2);}
+.form-status{font-size:.85rem;color:var(--accent);}
 .contact-alt{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1.2rem;}
 .contact-row{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;}
 .contact-link{font-family:'DM Mono',monospace;font-size:.8rem;letter-spacing:.08em;color:var(--muted);text-decoration:none;padding:.65rem 1.4rem;border:1.5px solid var(--border);transition:all .2s;}
