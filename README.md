@@ -1,6 +1,6 @@
 # Personal Portfolio Site
 
-Personal portfolio of Utku Akinci — a single-file, static website. HTML, CSS, and JavaScript all live inside `index.html`; there is no build system and no dependencies.
+Personal portfolio of Utku Akinci — a static website made of three hand-written files: `index.html`, `styles.css`, and `main.js`. There is no build system and no dependencies.
 
 [![utkuakinci.github.io](https://img.shields.io/badge/Go_To_Website-FF6600?style=for-the-badge)](https://utkuakinci.github.io/website/ "https://utkuakinci.github.io/website/")
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/akinciutku)
@@ -14,7 +14,8 @@ Personal portfolio of Utku Akinci — a single-file, static website. HTML, CSS, 
 - **Projects** — Hand-written project cards, plus the latest public repositories fetched live from the GitHub API.
 - **Publications** — Each entry lists authors, venue, and a link to the record or DOI.
 - **Scroll-reveal animations** — Elements with the `.reveal` class fade in on scroll via `IntersectionObserver`.
-- **Gallery** — Generated from a small array in the script, with a caption per language.
+- **Gallery** — Generated from a small array in `main.js`, with a caption per language.
+- **Contact form** — Messages are sent in the background through FormSubmit and arrive by email; direct links stay below it.
 - **Responsive design** — Fixed nav bar that highlights the current section and collapses into a menu below 1100px; single-column layout below 860px.
 - **Link previews** — Meta description, Open Graph, and Twitter Card tags.
 
@@ -30,6 +31,8 @@ Personal portfolio of Utku Akinci — a single-file, static website. HTML, CSS, 
 - Devicon SVGs via CDN (technology icons in the Skills section, loaded one file per icon)
 - GitHub REST API (public repository list, no token needed)
 - Unsplash via CDN (placeholder gallery images)
+- FormSubmit (contact form delivery, free, no account)
+- GoatCounter (optional visit counts, off by default)
 
 ## 🚀 Running
 
@@ -52,7 +55,7 @@ Elements without these attributes (e.g. publication titles) stay the same in bot
 
 **Hero and About photos.** Put the image in `images/` and change the `src` of `#heroImg` or `#aboutImg`.
 
-**Gallery.** Add, remove, or reorder entries in the `preloadedPhotos` array near the bottom of `index.html`:
+**Gallery.** Add, remove, or reorder entries in the `preloadedPhotos` array in `main.js`:
 
 ```js
 { src: 'images/lunisrover.jpeg', caption: { en: 'Lab work at DFKI', de: 'Laborarbeit am DFKI' } },
@@ -60,11 +63,15 @@ Elements without these attributes (e.g. publication titles) stay the same in bot
 
 **Projects.** Each project is an `<article class="proj-card">` in the Projects section; copy one to add another. The "Latest on GitHub" list below them needs no upkeep: it shows the six most recently pushed public repositories of the account in `GH_USER`, skipping forks. If the GitHub request fails, the list is simply hidden.
 
-**Hero terminal.** The commands and their output are the `termScript` array in the script.
+**Hero terminal.** The commands and their output are the `termScript` array in `main.js`.
 
-**Skill icons.** A tag gets an icon from an `<i class="ic ic-…">` element inside it. Each `.ic-…` class in the `<style>` block points at one SVG from <https://devicon.dev>; add a class there to add an icon. Tags without a matching icon stay text-only.
+**Skill icons.** A tag gets an icon from an `<i class="ic ic-…">` element inside it. Each `.ic-…` class in `styles.css` points at one SVG from <https://devicon.dev>; add a class there to add an icon. Tags without a matching icon stay text-only.
 
-**Colors.** All colors are CSS custom properties at the top of the `<style>` block: `:root` holds the light theme and `:root[data-theme="dark"]` the dark one. Add new colors to both.
+**Contact form.** The form posts to FormSubmit, which forwards each message to the email address in the form's `action` URL in `index.html`. The first message ever sent triggers a confirmation email to that address; messages are delivered only after the link in it is clicked. Changing the address means confirming again.
+
+**Analytics.** Visit counting is off. To turn it on, create a free site at <https://www.goatcounter.com> and put its code (the `mysite` part of `mysite.goatcounter.com`) into `GOATCOUNTER_CODE` in `main.js`. GoatCounter sets no cookies, so no consent banner is needed.
+
+**Colors.** All colors are CSS custom properties at the top of `styles.css`: `:root` holds the light theme and `:root[data-theme="dark"]` the dark one. Add new colors to both.
 
 ## 🌐 Deployment
 
@@ -78,7 +85,9 @@ If the URL changes, update the `og:url` and `og:image` meta tags in `index.html`
 .
 ├── images/       # Photos used by the hero, about, and gallery sections
 ├── favicon.svg   # Browser tab icon
-├── index.html    # All HTML, CSS, and JS live here
+├── index.html    # Page content and meta tags
+├── main.js       # Language switch, theme, gallery, terminal, GitHub list, contact form
+├── styles.css    # All styling, light and dark theme
 └── README.md     # Project documentation
 ```
 
@@ -96,13 +105,13 @@ These are blocked on a file, a decision, or a review rather than on code.
 - [ ] **Repository descriptions** — Several repositories shown under "Latest on GitHub" have no description on GitHub (e.g. FaceDetection, lawnmower, Computer-Vision-Projects). Adding one there updates the site automatically.
 - [ ] **Contribution graph** — Left out because commits are authored as `uakinci` while the repositories belong to `utkuakinci`. Link the commit email to the GitHub account first, otherwise the graph may come out empty.
 
+- [ ] **Contact form confirmation** — Send one test message through the live form and click the link in the confirmation email from FormSubmit; until then messages are not delivered.
+- [ ] **Analytics code** — Create a free GoatCounter site and set `GOATCOUNTER_CODE` in `main.js`.
+
 ### Improvements
 
 - [ ] **Gallery images** — Two slots still use Unsplash stock photos; replace them with real project/DFKI/conference photos.
 - [ ] **Content validation** — Keep dates and titles in Experience, Education, and Publications in sync with the current CV.
 - [ ] **Accessibility (a11y)** — Text contrast, focus outlines, and ARIA labels are in place; still open is a pass with a screen reader and keyboard-only navigation.
 - [ ] **Performance** — Serve the images in `images/` as WebP and self-host the two remaining Unsplash images.
-- [ ] **Contact form** — Replace `mailto:` with an embedded form (e.g. Formspree, Netlify Forms).
-- [ ] **Code organization** — Split CSS/JS into `styles.css` and `main.js` if the page keeps growing.
-- [ ] **Analytics** — Consider privacy-friendly analytics (e.g. Plausible, Umami).
 - [ ] **Cross-browser testing** — Checked in desktop Chrome at several widths; still to do are Safari, Firefox, and real phones.
