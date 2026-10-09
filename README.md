@@ -105,7 +105,7 @@ These are blocked on a file, a decision, or a review rather than on code.
 - [ ] **Repository descriptions** — Several repositories shown under "Latest on GitHub" have no description on GitHub (e.g. FaceDetection, lawnmower, Computer-Vision-Projects). Adding one there updates the site automatically.
 - [ ] **Contribution graph** — Left out because commits are authored as `uakinci` while the repositories belong to `utkuakinci`. Link the commit email to the GitHub account first, otherwise the graph may come out empty.
 
-- [ ] **Contact form confirmation** — Send one test message through the live form and click the link in the confirmation email from FormSubmit; until then messages are not delivered.
+- [X] **Contact form confirmation** — Send one test message through the live form and click the link in the confirmation email from FormSubmit; until then messages are not delivered.
 - [ ] **Analytics code** — Create a free GoatCounter site and set `GOATCOUNTER_CODE` in `main.js`.
 
 ### Improvements
