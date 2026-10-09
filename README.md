@@ -27,7 +27,7 @@ Personal portfolio of Utku Akinci — a single-file, static website. HTML, CSS, 
 - Vanilla HTML5 / CSS3 (theming via CSS custom properties in `:root`)
 - Vanilla JavaScript (no framework)
 - Google Fonts via CDN (DM Serif Display, DM Sans, DM Mono)
-- Devicon via CDN (technology icons in the Skills section)
+- Devicon SVGs via CDN (technology icons in the Skills section, loaded one file per icon)
 - GitHub REST API (public repository list, no token needed)
 - Unsplash via CDN (placeholder gallery images)
 
@@ -62,7 +62,7 @@ Elements without these attributes (e.g. publication titles) stay the same in bot
 
 **Hero terminal.** The commands and their output are the `termScript` array in the script.
 
-**Skill icons.** A tag gets an icon from an `<i class="devicon-…">` element inside it; class names are listed at <https://devicon.dev>. Tags without a matching icon stay text-only.
+**Skill icons.** A tag gets an icon from an `<i class="ic ic-…">` element inside it. Each `.ic-…` class in the `<style>` block points at one SVG from <https://devicon.dev>; add a class there to add an icon. Tags without a matching icon stay text-only.
 
 **Colors.** All colors are CSS custom properties at the top of the `<style>` block: `:root` holds the light theme and `:root[data-theme="dark"]` the dark one. Add new colors to both.
 
@@ -100,9 +100,9 @@ These are blocked on a file, a decision, or a review rather than on code.
 
 - [ ] **Gallery images** — Two slots still use Unsplash stock photos; replace them with real project/DFKI/conference photos.
 - [ ] **Content validation** — Keep dates and titles in Experience, Education, and Publications in sync with the current CV.
-- [ ] **Accessibility (a11y)** — Add `aria-pressed` on the language buttons, `aria-label` on the nav, and check color contrast.
-- [ ] **Performance** — Compress the images in `images/` and review the font-loading strategy.
+- [ ] **Accessibility (a11y)** — Text contrast, focus outlines, and ARIA labels are in place; still open is a pass with a screen reader and keyboard-only navigation.
+- [ ] **Performance** — Serve the images in `images/` as WebP and self-host the two remaining Unsplash images.
 - [ ] **Contact form** — Replace `mailto:` with an embedded form (e.g. Formspree, Netlify Forms).
 - [ ] **Code organization** — Split CSS/JS into `styles.css` and `main.js` if the page keeps growing.
 - [ ] **Analytics** — Consider privacy-friendly analytics (e.g. Plausible, Umami).
-- [ ] **Cross-browser testing** — Check the nav and gallery grid on mobile browsers and small screens.
+- [ ] **Cross-browser testing** — Checked in desktop Chrome at several widths; still to do are Safari, Firefox, and real phones.
