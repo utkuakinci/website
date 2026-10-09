@@ -14,7 +14,6 @@
   <meta name="twitter:card" content="summary_large_image"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css">
   <script>
     /* Set the theme before first paint: saved choice, else the OS preference */
     (function(){
@@ -173,7 +172,29 @@
     .skill-group h3{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent2);margin-bottom:1rem;padding-bottom:.4rem;border-bottom:1.5px solid var(--border);}
     .skill-tags{display:flex;flex-wrap:wrap;gap:.5rem;}
     .skill-tag{display:inline-flex;align-items:center;gap:.45rem;font-family:'DM Mono',monospace;font-size:.75rem;letter-spacing:.04em;padding:.35rem .85rem;background:var(--tag-bg);border:1.5px solid var(--border);color:var(--text);transition:border-color .2s,color .2s,background .2s;}
-    .skill-tag i{font-size:1rem;}
+    /* Icons are single SVGs used as masks, so they take the text color in both themes */
+    .ic{width:1rem;height:1rem;flex:none;background:currentColor;-webkit-mask:var(--icon) center/contain no-repeat;mask:var(--icon) center/contain no-repeat;}
+    .ic-c{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/c/c-plain.svg");}
+    .ic-cplusplus{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/cplusplus/cplusplus-plain.svg");}
+    .ic-python{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/python/python-plain.svg");}
+    .ic-html5{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/html5/html5-plain.svg");}
+    .ic-css3{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/css3/css3-plain.svg");}
+    .ic-bash{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/bash/bash-plain.svg");}
+    .ic-pytorch{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/pytorch/pytorch-original.svg");}
+    .ic-tensorflow{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/tensorflow/tensorflow-original.svg");}
+    .ic-pandas{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/pandas/pandas-plain.svg");}
+    .ic-numpy{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/numpy/numpy-plain.svg");}
+    .ic-matplotlib{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/matplotlib/matplotlib-plain.svg");}
+    .ic-raspberrypi{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/raspberrypi/raspberrypi-plain.svg");}
+    .ic-gitlab{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/gitlab/gitlab-plain.svg");}
+    .ic-github{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/github/github-original.svg");}
+    .ic-linux{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/linux/linux-plain.svg");}
+    .ic-cmake{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/cmake/cmake-plain.svg");}
+    .ic-docker{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/docker/docker-plain.svg");}
+    .ic-ros{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/ros/ros-original.svg");}
+    .ic-qt{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/qt/qt-original.svg");}
+    .ic-figma{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/figma/figma-plain.svg");}
+    .ic-latex{--icon:url("https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/latex/latex-original.svg");}
     .skill-tag:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-lt);}
  
     /* ── GALLERY ── */
@@ -495,19 +516,19 @@
       <div class="skill-group reveal">
         <h3 data-en="Programming Languages" data-de="Programmiersprachen">Programming Languages</h3>
         <div class="skill-tags">
-          <span class="skill-tag"><i class="devicon-c-plain"></i>C</span><span class="skill-tag"><i class="devicon-cplusplus-plain"></i>C++</span><span class="skill-tag"><i class="devicon-python-plain"></i>Python</span><span class="skill-tag"><i class="devicon-html5-plain"></i>HTML</span><span class="skill-tag"><i class="devicon-css3-plain"></i>CSS</span><span class="skill-tag"><i class="devicon-bash-plain"></i>Bash</span>
+          <span class="skill-tag"><i class="ic ic-c" aria-hidden="true"></i>C</span><span class="skill-tag"><i class="ic ic-cplusplus" aria-hidden="true"></i>C++</span><span class="skill-tag"><i class="ic ic-python" aria-hidden="true"></i>Python</span><span class="skill-tag"><i class="ic ic-html5" aria-hidden="true"></i>HTML</span><span class="skill-tag"><i class="ic ic-css3" aria-hidden="true"></i>CSS</span><span class="skill-tag"><i class="ic ic-bash" aria-hidden="true"></i>Bash</span>
         </div>
       </div>
       <div class="skill-group reveal">
         <h3 data-en="AI / Machine Learning" data-de="KI / Maschinelles Lernen">AI / Machine Learning</h3>
         <div class="skill-tags">
-          <span class="skill-tag"><i class="devicon-pytorch-original"></i>PyTorch</span><span class="skill-tag"><i class="devicon-tensorflow-original"></i>TensorFlow</span><span class="skill-tag">RAY</span><span class="skill-tag">CUDA</span><span class="skill-tag"><i class="devicon-pandas-plain"></i>Pandas</span><span class="skill-tag"><i class="devicon-numpy-plain"></i>NumPy</span><span class="skill-tag"><i class="devicon-matplotlib-plain"></i>Matplotlib</span>
+          <span class="skill-tag"><i class="ic ic-pytorch" aria-hidden="true"></i>PyTorch</span><span class="skill-tag"><i class="ic ic-tensorflow" aria-hidden="true"></i>TensorFlow</span><span class="skill-tag">RAY</span><span class="skill-tag">CUDA</span><span class="skill-tag"><i class="ic ic-pandas" aria-hidden="true"></i>Pandas</span><span class="skill-tag"><i class="ic ic-numpy" aria-hidden="true"></i>NumPy</span><span class="skill-tag"><i class="ic ic-matplotlib" aria-hidden="true"></i>Matplotlib</span>
         </div>
       </div>
       <div class="skill-group reveal">
         <h3 data-en="Embedded Systems &amp; Hardware" data-de="Eingebettete Systeme &amp; Hardware">Embedded Systems &amp; Hardware</h3>
         <div class="skill-tags">
-          <span class="skill-tag">ARM Cortex-M7</span><span class="skill-tag">ARM Cortex-A53</span><span class="skill-tag">Cortex-A72</span><span class="skill-tag">CANbus</span><span class="skill-tag"><i class="devicon-raspberrypi-plain"></i>Raspberry Pi</span>
+          <span class="skill-tag">ARM Cortex-M7</span><span class="skill-tag">ARM Cortex-A53</span><span class="skill-tag">Cortex-A72</span><span class="skill-tag">CANbus</span><span class="skill-tag"><i class="ic ic-raspberrypi" aria-hidden="true"></i>Raspberry Pi</span>
         </div>
       </div>
       <div class="skill-group reveal">
@@ -519,13 +540,13 @@
       <div class="skill-group reveal">
         <h3 data-en="DevOps &amp; Tooling" data-de="DevOps &amp; Werkzeuge">DevOps &amp; Tooling</h3>
         <div class="skill-tags">
-          <span class="skill-tag"><i class="devicon-gitlab-plain"></i>GitLab</span><span class="skill-tag"><i class="devicon-github-original"></i>GitHub</span><span class="skill-tag">CI/CD</span><span class="skill-tag"><i class="devicon-linux-plain"></i>Linux</span><span class="skill-tag"><i class="devicon-cmake-plain"></i>CMake</span><span class="skill-tag">Make</span><span class="skill-tag"><i class="devicon-docker-plain"></i>Docker</span><span class="skill-tag"><i class="devicon-ros-original"></i>ROS</span>
+          <span class="skill-tag"><i class="ic ic-gitlab" aria-hidden="true"></i>GitLab</span><span class="skill-tag"><i class="ic ic-github" aria-hidden="true"></i>GitHub</span><span class="skill-tag">CI/CD</span><span class="skill-tag"><i class="ic ic-linux" aria-hidden="true"></i>Linux</span><span class="skill-tag"><i class="ic ic-cmake" aria-hidden="true"></i>CMake</span><span class="skill-tag">Make</span><span class="skill-tag"><i class="ic ic-docker" aria-hidden="true"></i>Docker</span><span class="skill-tag"><i class="ic ic-ros" aria-hidden="true"></i>ROS</span>
         </div>
       </div>
       <div class="skill-group reveal">
         <h3 data-en="GUI &amp; Design Tools" data-de="GUI &amp; Design-Werkzeuge">GUI &amp; Design Tools</h3>
         <div class="skill-tags">
-          <span class="skill-tag"><i class="devicon-qt-original"></i>PyQt5</span><span class="skill-tag">Tkinter</span><span class="skill-tag"><i class="devicon-figma-plain"></i>Figma</span><span class="skill-tag">QGIS</span><span class="skill-tag"><i class="devicon-latex-original"></i>LaTeX</span><span class="skill-tag">Microsoft Office</span>
+          <span class="skill-tag"><i class="ic ic-qt" aria-hidden="true"></i>PyQt5</span><span class="skill-tag">Tkinter</span><span class="skill-tag"><i class="ic ic-figma" aria-hidden="true"></i>Figma</span><span class="skill-tag">QGIS</span><span class="skill-tag"><i class="ic ic-latex" aria-hidden="true"></i>LaTeX</span><span class="skill-tag">Microsoft Office</span>
         </div>
       </div>
       <div class="skill-group reveal">
