@@ -70,7 +70,7 @@
       <pre class="term-body" id="termBody"></pre>
     </div>
     <div class="hero-cta">
-      <a href="mailto:utku_akinci@hotmail.com" class="btn-primary" data-en="Get in touch" data-de="Kontakt aufnehmen">Get in touch</a>
+      <a href="#contact" class="btn-primary" data-en="Get in touch" data-de="Kontakt aufnehmen">Get in touch</a>
       <a href="#projects" class="btn-ghost" data-en="View my work ↓" data-de="Meine Arbeit ↓">View my work ↓</a>
       <a href="https://github.com/utkuakinci" target="_blank" rel="noopener" class="btn-ghost">GitHub ↗</a>
     </div>
@@ -425,6 +425,30 @@
     <p class="section-label" data-en="// get in touch" data-de="// kontakt">// get in touch</p>
     <h2 data-en="Let's Connect" data-de="Kontakt aufnehmen">Let's Connect</h2>
     <p class="contact-lead" data-en="Open to research collaborations, full-time roles, and interesting conversations." data-de="Offen für Forschungskooperationen, Festanstellungen und interessante Gespräche.">Open to research collaborations, full-time roles, and interesting conversations.</p>
+    <!-- Messages are delivered by FormSubmit (formsubmit.co) to the address in the action URL -->
+    <form class="contact-form reveal" id="contactForm" action="https://formsubmit.co/utku_akinci@hotmail.com" method="POST">
+      <input type="text" name="_honey" class="form-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <input type="hidden" name="_subject" value="New message from utkuakinci.github.io">
+      <div class="form-pair">
+        <div class="form-field">
+          <label for="cfName" data-en="Name" data-de="Name">Name</label>
+          <input id="cfName" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="form-field">
+          <label for="cfEmail" data-en="Email" data-de="E-Mail">Email</label>
+          <input id="cfEmail" name="email" type="email" autocomplete="email" required>
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="cfMessage" data-en="Message" data-de="Nachricht">Message</label>
+        <textarea id="cfMessage" name="message" rows="5" required></textarea>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn-primary" data-en="Send message" data-de="Nachricht senden">Send message</button>
+        <p class="form-status" id="formStatus" role="status"></p>
+      </div>
+    </form>
+    <p class="contact-alt" data-en="or reach me directly" data-de="oder direkt erreichen">or reach me directly</p>
     <div class="contact-row">
       <a href="mailto:utku_akinci@hotmail.com" class="contact-link">✉ utku_akinci@hotmail.com</a>
       <a href="https://github.com/utkuakinci" target="_blank" rel="noopener" class="contact-link">&lt;/&gt; GitHub</a>

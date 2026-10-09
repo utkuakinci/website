@@ -212,6 +212,21 @@ h2{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);let
 #contact .section-inner{text-align:center;}
 #contact h2{margin-bottom:1rem;}
 .contact-lead{font-size:.95rem;color:var(--muted);margin-bottom:2.5rem;}
+.contact-form{max-width:620px;margin:0 auto 2.5rem;text-align:left;display:flex;flex-direction:column;gap:1.1rem;}
+.form-hp{position:absolute;left:-9999px;}
+.form-pair{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:1.1rem;}
+.form-field{display:flex;flex-direction:column;gap:.4rem;}
+.form-field label{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+.form-field input,.form-field textarea{font:inherit;font-size:.92rem;color:var(--text);background:var(--surface);border:1.5px solid var(--border);border-radius:0;padding:.7rem .9rem;transition:border-color .2s;}
+.form-field textarea{resize:vertical;min-height:8rem;}
+.form-field input:focus,.form-field textarea:focus{outline:none;border-color:var(--accent);}
+.form-actions{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;}
+.contact-form .btn-primary{border:none;cursor:pointer;}
+.contact-form .btn-primary:disabled{opacity:.6;cursor:default;transform:none;}
+.form-status{font-size:.85rem;color:var(--muted);}
+.form-status.ok{color:var(--accent);}
+.form-status.error{color:var(--accent2);}
+.contact-alt{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1.2rem;}
 .contact-row{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;}
 .contact-link{font-family:'DM Mono',monospace;font-size:.8rem;letter-spacing:.08em;color:var(--muted);text-decoration:none;padding:.65rem 1.4rem;border:1.5px solid var(--border);transition:all .2s;}
 .contact-link:hover{border-color:var(--accent);color:var(--accent);}

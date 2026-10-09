@@ -132,6 +132,35 @@ const navObs = new IntersectionObserver(entries => {
 },{rootMargin:'-45% 0px -50% 0px'});
 document.querySelectorAll('#hero,section').forEach(sec=>navObs.observe(sec));
 
+/* ── CONTACT FORM ── */
+/* Sent in the background through FormSubmit; without JavaScript the form posts normally. */
+const formText = {
+  en: { sending: 'Sending…', ok: 'Thanks — your message has been sent.', error: 'Could not send the message. Please email me directly instead.' },
+  de: { sending: 'Wird gesendet…', ok: 'Danke — Ihre Nachricht wurde gesendet.', error: 'Die Nachricht konnte nicht gesendet werden. Bitte schreiben Sie mir direkt per E-Mail.' },
+};
+const contactForm=document.getElementById('contactForm');
+contactForm.addEventListener('submit', e => {
+  e.preventDefault();
+  const data=Object.fromEntries(new FormData(contactForm));
+  if (data._honey) return;
+  const status=document.getElementById('formStatus');
+  const button=contactForm.querySelector('button');
+  const say=state=>{ status.textContent=formText[currentLang][state]; status.className='form-status '+state; };
+  button.disabled=true; say('sending');
+  fetch(contactForm.action.replace('formsubmit.co/','formsubmit.co/ajax/'), {
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify(data),
+  })
+    .then(res=>res.json())
+    .then(result=>{
+      if (String(result.success)!=='true') throw new Error(result.message);
+      contactForm.reset(); say('ok');
+    })
+    .catch(()=>say('error'))
+    .finally(()=>{ button.disabled=false; });
+});
+
 /* ── THEME TOGGLE ── */
 function toggleTheme() {
   const next = document.documentElement.getAttribute('data-theme')==='dark' ? 'light' : 'dark';
