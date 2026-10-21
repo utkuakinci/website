@@ -144,6 +144,62 @@ if (new URLSearchParams(location.search).has('sent')) {
   history.replaceState(null,'',location.pathname+'#contact');
 }
 
+/* ── SURVEY ── */
+/* One question, one tap: each answer is a submit button. Shown once per visitor, SURVEY_DELAY_MS after load;
+   answering or closing it keeps it away on later visits.
+   Unlike the contact form it posts through FormSubmit's AJAX endpoint, so the visitor stays on the page (no captcha). */
+const SURVEY_DELAY_MS=20000;
+const survey=document.getElementById('survey');
+const surveyForm=document.getElementById('surveyForm');
+const surveyStatus=document.getElementById('surveyStatus');
+const surveyText = {
+  sending: { en: 'Sending…', de: 'Wird gesendet…' },
+  ok:      { en: 'Thank you!', de: 'Vielen Dank!' },
+  error:   { en: 'Could not send. Please try again later.', de: 'Senden fehlgeschlagen. Bitte später erneut versuchen.' },
+};
+function surveyDone() { try { return localStorage.getItem('survey'); } catch(e) { return null; } }
+function closeSurvey(reason) {
+  survey.classList.remove('open');
+  setTimeout(()=>{ survey.hidden=true; }, 250);
+  try { localStorage.setItem('survey', reason); } catch(e) {}
+}
+function setSurveyStatus(state) {
+  surveyStatus.dataset.en=surveyText[state].en;
+  surveyStatus.dataset.de=surveyText[state].de;
+  surveyStatus.textContent=surveyText[state][currentLang];
+}
+if (!surveyDone()) {
+  setTimeout(()=>{ survey.hidden=false; requestAnimationFrame(()=>survey.classList.add('open')); }, SURVEY_DELAY_MS);
+}
+document.getElementById('surveyClose').addEventListener('click', ()=>closeSurvey('dismissed'));
+document.addEventListener('keydown', e=>{ if (e.key==='Escape' && !survey.hidden) closeSurvey('dismissed'); });
+surveyForm.addEventListener('submit', e => {
+  e.preventDefault();
+  const data=Object.fromEntries(new FormData(surveyForm));
+  if (data._honey || !e.submitter) return;
+  data.reason=e.submitter.value;
+  const options=surveyForm.querySelectorAll('.survey-option');
+  options.forEach(b=>{ b.disabled=true; });
+  e.submitter.classList.add('chosen');
+  setSurveyStatus('sending');
+  fetch(surveyForm.action.replace('formsubmit.co/','formsubmit.co/ajax/'), {
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify(data),
+  })
+    .then(res=>res.json())
+    .then(result=>{
+      if (String(result.success)!=='true') throw new Error(result.message);
+      setSurveyStatus('ok');
+      setTimeout(()=>closeSurvey('answered'), 2000);
+    })
+    .catch(()=>{
+      setSurveyStatus('error');
+      e.submitter.classList.remove('chosen');
+      options.forEach(b=>{ b.disabled=false; });
+    });
+});
+
 /* ── ANALYTICS ── */
 /* GoatCounter: cookie-less visit counts. Stays off until a site code is set here. */
 const GOATCOUNTER_CODE='';
