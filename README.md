@@ -16,7 +16,7 @@ Personal portfolio of Utku Akinci — a static website made of three hand-writte
 - **Scroll-reveal animations** — Elements with the `.reveal` class fade in on scroll via `IntersectionObserver`.
 - **Gallery** — Generated from a small array in `main.js`, with a caption per language.
 - **Contact form** — Messages go through FormSubmit, which checks a captcha and forwards them by email; direct links stay below it.
-- **Visitor survey** — 20 seconds after load, a small popup in the bottom-right corner asks "What brings you here?" with three one-tap answers: Hiring / recruiting, Research collaboration, Just looking. It appears once per visitor; answers arrive by email.
+- **Visitor survey** — 20 seconds after load, a small popup in the bottom-right corner asks "What brings you here today?" with three one-tap answers: Hiring / recruiting, Research collaboration, Just looking. It appears once per visitor; answers arrive by email.
 - **Responsive design** — Fixed nav bar that highlights the current section and collapses into a menu below 1100px; single-column layout below 860px.
 - **Link previews** — Meta description, Open Graph, and Twitter Card tags.
 
