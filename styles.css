@@ -228,6 +228,30 @@ h2{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);let
 .contact-link{font-family:'DM Mono',monospace;font-size:.8rem;letter-spacing:.08em;color:var(--muted);text-decoration:none;padding:.65rem 1.4rem;border:1.5px solid var(--border);transition:all .2s;}
 .contact-link:hover{border-color:var(--accent);color:var(--accent);}
 
+/* ── SURVEY ── */
+.survey{position:fixed;right:1.5rem;bottom:1.5rem;z-index:90;width:min(340px,calc(100vw - 2rem));background:var(--surface);border:1.5px solid var(--border);box-shadow:0 12px 32px rgba(0,0,0,.18);padding:1.3rem 1.4rem 1.2rem;opacity:0;transform:translateY(16px);transition:opacity .25s,transform .25s;}
+.survey.open{opacity:1;transform:none;}
+.survey[hidden]{display:none;}
+.survey-close{position:absolute;top:.45rem;right:.55rem;background:none;border:none;font-size:1.35rem;line-height:1;color:var(--muted);cursor:pointer;padding:.2rem .4rem;}
+.survey-close:hover{color:var(--accent);}
+.survey-title{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent2);margin-bottom:.9rem;}
+.survey form{display:flex;flex-direction:column;gap:1rem;}
+.survey-q{border:none;padding:0;margin:0;min-width:0;}
+.survey-q legend,.survey .form-field label{font-family:'DM Sans',sans-serif;font-size:.92rem;font-weight:500;letter-spacing:0;text-transform:none;color:var(--text);padding:0;margin-bottom:.55rem;}
+.survey .form-field label{margin-bottom:0;}
+.survey-choices{display:flex;gap:.6rem;}
+.survey-choice{position:relative;flex:1;cursor:pointer;}
+.survey-choice input{position:absolute;inset:0;opacity:0;margin:0;cursor:pointer;}
+.survey-choice span{display:block;text-align:center;font-family:'DM Mono',monospace;font-size:.75rem;letter-spacing:.06em;padding:.5rem;border:1.5px solid var(--border);color:var(--text);transition:background .2s,border-color .2s,color .2s;}
+.survey-choice:hover span{border-color:var(--accent);}
+.survey-choice input:checked + span{background:var(--accent);border-color:var(--accent);color:var(--on-accent);}
+.survey-choice input:focus-visible + span{outline:2px solid var(--accent);outline-offset:2px;}
+.survey-actions{display:flex;align-items:center;gap:.9rem;flex-wrap:wrap;}
+.survey .btn-primary{border:none;cursor:pointer;padding:.6rem 1.4rem;}
+.survey .btn-primary:disabled{opacity:.6;cursor:default;transform:none;}
+.survey-status{font-size:.8rem;color:var(--accent);}
+@media(max-width:860px){.survey{right:1rem;bottom:1rem;}}
+
 footer{border-top:1px solid var(--border);text-align:center;padding:2rem;font-family:'DM Mono',monospace;font-size:.72rem;color:var(--muted);}
 footer a{color:var(--accent);text-decoration:none;}
 footer a:hover{text-decoration:underline;}

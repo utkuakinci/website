@@ -459,6 +459,31 @@
   </div>
 </section>
  
+<!-- SURVEY: two-question popup, bottom right. Answers are emailed through FormSubmit, like the contact form. -->
+<aside class="survey" id="survey" aria-labelledby="surveyTitle" hidden>
+  <button type="button" class="survey-close" id="surveyClose" aria-label="Close survey">&times;</button>
+  <p class="survey-title" id="surveyTitle" data-en="// quick question" data-de="// kurze frage">// quick question</p>
+  <form id="surveyForm" action="https://formsubmit.co/utku_akinci@hotmail.com" method="POST">
+    <input type="text" name="_honey" class="form-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <input type="hidden" name="_subject" value="Website survey response">
+    <fieldset class="survey-q">
+      <legend data-en="Are you a recruiter?" data-de="Sind Sie im Recruiting tätig?">Are you a recruiter?</legend>
+      <div class="survey-choices">
+        <label class="survey-choice"><input type="radio" name="recruiter" value="yes" required><span data-en="Yes" data-de="Ja">Yes</span></label>
+        <label class="survey-choice"><input type="radio" name="recruiter" value="no"><span data-en="No" data-de="Nein">No</span></label>
+      </div>
+    </fieldset>
+    <div class="form-field">
+      <label for="svCompany" data-en="Which company do you work for?" data-de="Bei welchem Unternehmen arbeiten Sie?">Which company do you work for?</label>
+      <input id="svCompany" name="company" type="text" autocomplete="organization">
+    </div>
+    <div class="survey-actions">
+      <button type="submit" class="btn-primary" data-en="Send" data-de="Senden">Send</button>
+      <p class="survey-status" id="surveyStatus" role="status"></p>
+    </div>
+  </form>
+</aside>
+
 <footer>
   <span data-en="© 2026 Utku Akinci · Bremen, Germany" data-de="© 2026 Utku Akinci · Bremen, Deutschland">© 2026 Utku Akinci · Bremen, Germany</span> ·
   <a href="https://github.com/utkuakinci/website" target="_blank" rel="noopener" data-en="Source on GitHub ↗" data-de="Quellcode auf GitHub ↗">Source on GitHub ↗</a>
