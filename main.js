@@ -145,9 +145,10 @@ if (new URLSearchParams(location.search).has('sent')) {
 }
 
 /* ── SURVEY ── */
-/* Shown once per visitor, a few seconds after load. Answering or closing it keeps it away on later visits.
+/* One question, one tap: each answer is a submit button. Shown once per visitor, SURVEY_DELAY_MS after load;
+   answering or closing it keeps it away on later visits.
    Unlike the contact form it posts through FormSubmit's AJAX endpoint, so the visitor stays on the page (no captcha). */
-const SURVEY_DELAY_MS=8000;
+const SURVEY_DELAY_MS=20000;
 const survey=document.getElementById('survey');
 const surveyForm=document.getElementById('surveyForm');
 const surveyStatus=document.getElementById('surveyStatus');
@@ -175,9 +176,12 @@ document.addEventListener('keydown', e=>{ if (e.key==='Escape' && !survey.hidden
 surveyForm.addEventListener('submit', e => {
   e.preventDefault();
   const data=Object.fromEntries(new FormData(surveyForm));
-  if (data._honey) return;
-  const button=surveyForm.querySelector('button[type="submit"]');
-  button.disabled=true; setSurveyStatus('sending');
+  if (data._honey || !e.submitter) return;
+  data.reason=e.submitter.value;
+  const options=surveyForm.querySelectorAll('.survey-option');
+  options.forEach(b=>{ b.disabled=true; });
+  e.submitter.classList.add('chosen');
+  setSurveyStatus('sending');
   fetch(surveyForm.action.replace('formsubmit.co/','formsubmit.co/ajax/'), {
     method:'POST',
     headers:{'Content-Type':'application/json','Accept':'application/json'},
@@ -189,7 +193,11 @@ surveyForm.addEventListener('submit', e => {
       setSurveyStatus('ok');
       setTimeout(()=>closeSurvey('answered'), 2000);
     })
-    .catch(()=>{ setSurveyStatus('error'); button.disabled=false; });
+    .catch(()=>{
+      setSurveyStatus('error');
+      e.submitter.classList.remove('chosen');
+      options.forEach(b=>{ b.disabled=false; });
+    });
 });
 
 /* ── ANALYTICS ── */

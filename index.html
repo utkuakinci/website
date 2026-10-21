@@ -460,27 +460,18 @@
 </section>
  
 <!-- SURVEY: two-question popup, bottom right. Answers are emailed through FormSubmit, like the contact form. -->
-<aside class="survey" id="survey" aria-labelledby="surveyTitle" hidden>
+<aside class="survey" id="survey" aria-labelledby="surveyQuestion" hidden>
   <button type="button" class="survey-close" id="surveyClose" aria-label="Close survey">&times;</button>
-  <p class="survey-title" id="surveyTitle" data-en="// quick question" data-de="// kurze frage">// quick question</p>
   <form id="surveyForm" action="https://formsubmit.co/utku_akinci@hotmail.com" method="POST">
     <input type="text" name="_honey" class="form-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
     <input type="hidden" name="_subject" value="Website survey response">
-    <fieldset class="survey-q">
-      <legend data-en="Are you a recruiter?" data-de="Sind Sie im Recruiting tätig?">Are you a recruiter?</legend>
-      <div class="survey-choices">
-        <label class="survey-choice"><input type="radio" name="recruiter" value="yes" required><span data-en="Yes" data-de="Ja">Yes</span></label>
-        <label class="survey-choice"><input type="radio" name="recruiter" value="no"><span data-en="No" data-de="Nein">No</span></label>
-      </div>
-    </fieldset>
-    <div class="form-field">
-      <label for="svCompany" data-en="Which company do you work for?" data-de="Bei welchem Unternehmen arbeiten Sie?">Which company do you work for?</label>
-      <input id="svCompany" name="company" type="text" autocomplete="organization">
+    <p class="survey-question" id="surveyQuestion" data-en="What brings you here?" data-de="Was führt Sie hierher?">What brings you here?</p>
+    <div class="survey-options" role="group">
+      <button type="submit" class="survey-option" name="reason" value="Hiring / recruiting" data-en="Hiring / recruiting" data-de="Personalsuche / Recruiting">Hiring / recruiting</button>
+      <button type="submit" class="survey-option" name="reason" value="Research collaboration" data-en="Research collaboration" data-de="Forschungskooperation">Research collaboration</button>
+      <button type="submit" class="survey-option" name="reason" value="Just looking" data-en="Just looking" data-de="Nur umschauen">Just looking</button>
     </div>
-    <div class="survey-actions">
-      <button type="submit" class="btn-primary" data-en="Send" data-de="Senden">Send</button>
-      <p class="survey-status" id="surveyStatus" role="status"></p>
-    </div>
+    <p class="survey-status" id="surveyStatus" role="status"></p>
   </form>
 </aside>
 

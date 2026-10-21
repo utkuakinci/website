@@ -16,7 +16,7 @@ Personal portfolio of Utku Akinci — a static website made of three hand-writte
 - **Scroll-reveal animations** — Elements with the `.reveal` class fade in on scroll via `IntersectionObserver`.
 - **Gallery** — Generated from a small array in `main.js`, with a caption per language.
 - **Contact form** — Messages go through FormSubmit, which checks a captcha and forwards them by email; direct links stay below it.
-- **Visitor survey** — A small popup in the bottom-right corner asks whether the visitor is a recruiter and which company they work for. It appears once per visitor; answers arrive by email.
+- **Visitor survey** — 20 seconds after load, a small popup in the bottom-right corner asks "What brings you here?" with three one-tap answers: Hiring / recruiting, Research collaboration, Just looking. It appears once per visitor; answers arrive by email.
 - **Responsive design** — Fixed nav bar that highlights the current section and collapses into a menu below 1100px; single-column layout below 860px.
 - **Link previews** — Meta description, Open Graph, and Twitter Card tags.
 
@@ -70,7 +70,7 @@ Elements without these attributes (e.g. publication titles) stay the same in bot
 
 **Contact form.** The form posts to FormSubmit, which shows its captcha page, sends the visitor back to the site, and forwards each message to the email address in the form's `action` URL in `index.html`. The first message ever sent triggers a confirmation email to that address; messages are delivered only after the link in it is clicked. Changing the address means confirming again.
 
-**Visitor survey.** The popup is the `<aside id="survey">` near the end of `index.html`; its delay is `SURVEY_DELAY_MS` in `main.js`. Answers are emailed through FormSubmit to the same address as the contact form, without a captcha so the visitor never leaves the page. Once a visitor answers or closes it, a flag in their browser keeps it from appearing again; to see it again while testing, run `localStorage.removeItem("survey")` in the browser console and reload.
+**Visitor survey.** The popup is the `<aside id="survey">` near the end of `index.html`; each answer is a button in it, so adding an option means adding a button with `data-en`/`data-de` labels. The delay is `SURVEY_DELAY_MS` in `main.js`. Answers are emailed through FormSubmit to the same address as the contact form, without a captcha so the visitor never leaves the page. Once a visitor answers or closes it, a flag in their browser keeps it from appearing again; to see it again while testing, run `localStorage.removeItem("survey")` in the browser console and reload.
 
 **Analytics.** Visit counting is off. To turn it on, create a free site at <https://www.goatcounter.com> and put its code (the `mysite` part of `mysite.goatcounter.com`) into `GOATCOUNTER_CODE` in `main.js`. GoatCounter sets no cookies, so no consent banner is needed.
 
