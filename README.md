@@ -102,15 +102,15 @@ These are blocked on a file, a decision, or a review rather than on code.
 
 - [ ] **CV download** — No CV file exists in the repo yet (`images/utku_cv.jpeg` is a portrait). Add the CV as a PDF, then link it from the hero and contact sections.
 - [ ] **Custom domain** — Buy a domain, point it at GitHub Pages, then add a `CNAME` file and update the `og:url` and `og:image` tags.
-- [ ] **Publication years** — "Prototyping and Testing System Interconnect Standard…" and "Improving Flexibility in Modular Space Robots…" are listed as 2026, following their DFKI records (Engineering Proceedings 133). Confirm, or change back to 2025.
-- [ ] **Project card texts** — The descriptions in the Projects section were derived from the Experience bullets. Check them, in particular that the ARM Cortex-M7 unit test environment belongs to SAMLER-KI.
-- [ ] **German translations** — Have the German texts proofread, especially the newer ones (project cards, dates, gallery captions).
-- [ ] **Repository descriptions** — Several repositories shown under "Latest on GitHub" have no description on GitHub (e.g. FaceDetection, lawnmower, Computer-Vision-Projects). Adding one there updates the site automatically.
+- [X] ~~**Publication years** — "Prototyping and Testing System Interconnect Standard…" and "Improving Flexibility in Modular Space Robots…" are listed as 2026, following their DFKI records (Engineering Proceedings 133). Confirm, or change back to 2025.~~
+- [X] ~~**Project card texts** — The descriptions in the Projects section were derived from the Experience bullets. Check them, in particular that the ARM Cortex-M7 unit test environment belongs to SAMLER-KI.~~
+- [X] ~~**German translations** — Have the German texts proofread, especially the newer ones (project cards, dates, gallery captions).~~
+- [X] ~~**Repository descriptions** — Several repositories shown under "Latest on GitHub" have no description on GitHub (e.g. FaceDetection, lawnmower, Computer-Vision-Projects). Adding one there updates the site automatically.~~
 - [ ] **Contribution graph** — Left out because commits are authored as `uakinci` while the repositories belong to `utkuakinci`. Link the commit email to the GitHub account first, otherwise the graph may come out empty.
 
 - [X] ~~**Contact form confirmation** — Send one test message through the live form and click the link in the confirmation email from FormSubmit; until then messages are not delivered.~~
 - [ ] **Analytics code** — Create a free GoatCounter site and set `GOATCOUNTER_CODE` in `main.js`.
-- [ ] **Survey delivery** — Answer the survey once on the live site and check that the response email arrives (it may land in the junk folder).
+- [X] ~~**Survey delivery** — Answer the survey once on the live site and check that the response email arrives (it may land in the junk folder).~~
 
 ### Improvements
 
