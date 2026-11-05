@@ -26,6 +26,7 @@ const preloadedPhotos = [
   { src: 'images/Lunis.jpg',       caption: { en: 'Lab work at DFKI',             de: 'Laborarbeit am DFKI'               } },
   { src: 'images/modkom-hil.jpg',  caption: { en: 'Hardware-in-the-Loop (HIL) testing', de: 'Hardware-in-the-Loop-Tests (HIL)' } },
   { src: 'images/coyote.jpeg',     caption: { en: 'On-field Technology Readiness Level (TRL) validation test', de: 'Feldtest zur Validierung des Technologie-Reifegrads (TRL)' } },
+  { src: 'images/lunisrover.jpeg', caption: { en: 'Volunteering at Yuri’s Night',  de: 'Ehrenamtlich bei der Yuri’s Night' } },
   { src: 'https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?w=600&q=80', caption: { en: 'Conference presentation',      de: 'Konferenzvortrag'                  } },
   { src: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80', caption: { en: 'Embedded systems development', de: 'Entwicklung eingebetteter Systeme' } },
 ];
