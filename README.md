@@ -14,7 +14,7 @@ Personal portfolio of Utku Akinci — a static website made of three hand-writte
 - **Projects** — Hand-written project cards, plus the latest public repositories fetched live from the GitHub API.
 - **Publications** — Each entry lists authors, venue, and a link to the record or DOI.
 - **Scroll-reveal animations** — Elements with the `.reveal` class fade in on scroll via `IntersectionObserver`.
-- **Gallery** — Generated from a small array in `main.js`, with a caption per language.
+- **Gallery** — Generated from a small array in `main.js`, with a caption per language. Clicking a photo opens it large in a lightbox; arrow keys step through the photos and Esc closes it.
 - **Contact form** — Messages go through FormSubmit, which checks a captcha and forwards them by email; direct links stay below it.
 - **Visitor survey** — 20 seconds after load, a small popup in the bottom-right corner asks "What brings you here today?" with three one-tap answers: Hiring / recruiting, Research collaboration, Just looking. It appears once per visitor; answers arrive by email.
 - **Responsive design** — Fixed nav bar that highlights the current section and collapses into a menu below 1100px; single-column layout below 860px.

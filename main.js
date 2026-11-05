@@ -41,7 +41,7 @@ function addGallerySlot(preImg, caption) {
       '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>'+
       '<span>Photo</span>'+
     '</div>'+
-    '<div class="slot-caption"><span class="cap-text" data-en="'+cap.en+'" data-de="'+cap.de+'">'+preCaption+'</span></div>';
+    '<div class="slot-caption"><span class="cap-text" id="'+id+'-cap" data-en="'+cap.en+'" data-de="'+cap.de+'">'+preCaption+'</span></div>';
   grid.appendChild(slot);
   if (preImg) {
     const img=document.createElement('img');
@@ -50,9 +50,70 @@ function addGallerySlot(preImg, caption) {
     slot.prepend(img);
     slot.querySelector('.slot-inner').style.display='none';
     slot.classList.add('has-img');
+    // Opens in the lightbox; the caption doubles as the accessible name, so it follows the language switch
+    slot.tabIndex=0;
+    slot.setAttribute('role','button');
+    slot.setAttribute('aria-labelledby', id+'-cap');
   }
 }
 preloadedPhotos.forEach(p=>addGallerySlot(p.src, p.caption));
+
+/* ── LIGHTBOX ── */
+/* Clicking a gallery photo shows it large. Arrow keys or the side buttons step through the photos. */
+const lightbox=document.getElementById('lightbox');
+const lbImg=document.getElementById('lbImg');
+const lbCaption=document.getElementById('lbCaption');
+const lbButtons=[...lightbox.querySelectorAll('button')];
+let lbIndex=0, lbReturnFocus=null;
+const photoSlots=()=>[...grid.querySelectorAll('.gallery-slot.has-img')];
+// Unsplash placeholders are loaded small for the grid; ask for a larger copy here
+const largeSrc=src=>src.replace(/([?&])w=\d+/, '$1w=1600');
+function showPhoto(i) {
+  const slots=photoSlots();
+  lbIndex=(i+slots.length)%slots.length;
+  const img=slots[lbIndex].querySelector('img');
+  lbImg.src=largeSrc(img.getAttribute('src'));
+  lbImg.alt=img.alt;
+  lbCaption.textContent=slots[lbIndex].querySelector('.cap-text').textContent;
+}
+function openLightbox(slot) {
+  lbReturnFocus=slot;
+  showPhoto(photoSlots().indexOf(slot));
+  lightbox.hidden=false;
+  document.body.style.overflow='hidden';
+  void lightbox.offsetWidth; // apply the unhidden state first so the fade-in runs
+  lightbox.classList.add('open');
+  document.getElementById('lbClose').focus();
+}
+function closeLightbox() {
+  lightbox.classList.remove('open');
+  document.body.style.overflow='';
+  setTimeout(()=>{ lightbox.hidden=true; lbImg.removeAttribute('src'); }, 200);
+  if (lbReturnFocus) lbReturnFocus.focus();
+}
+grid.addEventListener('click', e=>{
+  const slot=e.target.closest('.gallery-slot.has-img');
+  if (slot) openLightbox(slot);
+});
+grid.addEventListener('keydown', e=>{
+  if ((e.key==='Enter' || e.key===' ') && e.target.matches('.gallery-slot.has-img')) { e.preventDefault(); openLightbox(e.target); }
+});
+document.getElementById('lbClose').addEventListener('click', closeLightbox);
+document.getElementById('lbPrev').addEventListener('click', ()=>showPhoto(lbIndex-1));
+document.getElementById('lbNext').addEventListener('click', ()=>showPhoto(lbIndex+1));
+lightbox.addEventListener('click', e=>{ if (e.target===lightbox || e.target.classList.contains('lb-figure')) closeLightbox(); });
+document.addEventListener('keydown', e=>{
+  if (lightbox.hidden) return;
+  if (e.key==='Escape') closeLightbox();
+  else if (e.key==='ArrowLeft') showPhoto(lbIndex-1);
+  else if (e.key==='ArrowRight') showPhoto(lbIndex+1);
+  else if (e.key==='Tab') {
+    // Keep focus on the lightbox controls while it is open
+    const i=lbButtons.indexOf(document.activeElement);
+    e.preventDefault();
+    lbButtons[(i+(e.shiftKey?-1:1)+lbButtons.length)%lbButtons.length].focus();
+  }
+});
 
 /* ── HERO TERMINAL ── */
 /* Commands are typed out one character at a time; their output appears at once. */
@@ -169,10 +230,10 @@ function setSurveyStatus(state) {
   surveyStatus.textContent=surveyText[state][currentLang];
 }
 if (!surveyDone()) {
-  setTimeout(()=>{ survey.hidden=false; requestAnimationFrame(()=>survey.classList.add('open')); }, SURVEY_DELAY_MS);
+  setTimeout(()=>{ survey.hidden=false; void survey.offsetWidth; survey.classList.add('open'); }, SURVEY_DELAY_MS);
 }
 document.getElementById('surveyClose').addEventListener('click', ()=>closeSurvey('dismissed'));
-document.addEventListener('keydown', e=>{ if (e.key==='Escape' && !survey.hidden) closeSurvey('dismissed'); });
+document.addEventListener('keydown', e=>{ if (e.key==='Escape' && !survey.hidden && lightbox.hidden) closeSurvey('dismissed'); });
 surveyForm.addEventListener('submit', e => {
   e.preventDefault();
   const data=Object.fromEntries(new FormData(surveyForm));
