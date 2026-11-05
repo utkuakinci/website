@@ -59,7 +59,7 @@ Elements without these attributes (e.g. publication titles) stay the same in bot
 **Gallery.** Add, remove, or reorder entries in the `preloadedPhotos` array in `main.js`:
 
 ```js
-{ src: 'images/lunisrover.jpeg', caption: { en: 'Lab work at DFKI', de: 'Laborarbeit am DFKI' } },
+{ src: 'images/Lunis.jpg', caption: { en: 'Lab work at DFKI', de: 'Laborarbeit am DFKI' } },
 ```
 
 **Projects.** Each project is an `<article class="proj-card">` in the Projects section; copy one to add another. The "Latest on GitHub" list below them needs no upkeep: it shows the six most recently pushed public repositories of the account in `GH_USER`, skipping forks. If the GitHub request fails, the list is simply hidden.
