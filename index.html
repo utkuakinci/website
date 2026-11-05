@@ -458,6 +458,17 @@
   </div>
 </section>
  
+<!-- LIGHTBOX: large view of a gallery photo, filled in by main.js -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lbCaption" hidden>
+  <button type="button" class="lb-btn lb-close" id="lbClose" aria-label="Close">&times;</button>
+  <button type="button" class="lb-btn lb-prev" id="lbPrev" aria-label="Previous photo">&lsaquo;</button>
+  <figure class="lb-figure">
+    <img id="lbImg" alt="">
+    <figcaption id="lbCaption"></figcaption>
+  </figure>
+  <button type="button" class="lb-btn lb-next" id="lbNext" aria-label="Next photo">&rsaquo;</button>
+</div>
+
 <!-- SURVEY: two-question popup, bottom right. Answers are emailed through FormSubmit, like the contact form. -->
 <aside class="survey" id="survey" aria-labelledby="surveyQuestion" hidden>
   <button type="button" class="survey-close" id="surveyClose" aria-label="Close survey">&times;</button>
