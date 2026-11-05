@@ -25,7 +25,7 @@ const preloadedPhotos = [
   /*{ src: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=80', caption: 'Lab work at DFKI'              },*/
   { src: 'images/Lunis.jpg',       caption: { en: 'Lab work at DFKI',             de: 'Laborarbeit am DFKI'               } },
   { src: 'images/modkom-hil.jpg',  caption: { en: 'Hardware-in-the-Loop (HIL) testing', de: 'Hardware-in-the-Loop-Tests (HIL)' } },
-  { src: 'images/coyote.jpeg',     caption: { en: 'Robotics research',            de: 'Robotikforschung'                  } },
+  { src: 'images/coyote.jpeg',     caption: { en: 'On-field robotic Technology Readiness Level (TRL) validation test', de: 'Feldtest zur Validierung des Technologie-Reifegrads (TRL) eines Roboters' } },
   { src: 'https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?w=600&q=80', caption: { en: 'Conference presentation',      de: 'Konferenzvortrag'                  } },
   { src: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80', caption: { en: 'Embedded systems development', de: 'Entwicklung eingebetteter Systeme' } },
 ];
